@@ -33,13 +33,13 @@ namespace ValView
         protected global::System.Web.UI.WebControls.LinkButton lbtnLogin;
 
         /// <summary>
-        /// lbtnSignUp control.
+        /// lbtnUserProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSignUp;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnUserProfile;
 
         /// <summary>
         /// lbtnTournaments control.
@@ -67,15 +67,6 @@ namespace ValView
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnPlayers;
-
-        /// <summary>
-        /// lbtnUserProfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnUserProfile;
 
         /// <summary>
         /// lbtnLogOut control.
