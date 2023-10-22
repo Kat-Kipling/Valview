@@ -76,32 +76,22 @@ header
 
 .card
 {
-	display: inline-block;
-	overflow: visible !important;
 	position: static;
-	font-size: 1.4rem;
-	width: 20rem;
 }
-.card-body
+
+.profile-picture {
+	width: 20%;
+	height: 20%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-card
 {
-	background-color: red;
-}
-
-.card-img-top {
-	background-color: #2e3436;
-}
-
-.card h1
-{
-	font-size: 2.7rem;
-}
-
-footer {
 	text-align: center;
-	color: #fff;
-	height: 10vh;
-	display: flex;
-	justify-content: normal;
+	align-content: center;
+	font-size: 1.6rem;
 }
 
 footer {
