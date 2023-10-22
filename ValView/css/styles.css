@@ -1,57 +1,107 @@
-
+body {
+	font-size: 62.5%;
+}
 
 #welcome 
 {
 	background-color: #fd4556;
-	width: 100vw;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	flex-direction: column;
 	text-align: center;
-	font-size: 4vmin;
+	font-size: 1.6rem;
+}
+
+.navbar-brand {
+	font-size: 2.4rem;
+	margin-right: 3%;
 }
 
 h1
 {
-	font-size: 6vmax;
+	font-size: 3.5rem;
 }
 
 header 
 {
-	position: sticky;
 	top: 0;
-	font-size: 2vmin;
-	height: 10vh;
+	font-size: 1.6rem;
+	position: sticky;
+	width: 100%;
 }
 
 .navbar {
 	height: 100%;
+	padding: 2vw;
 }
 
-main 
-{
-	font-size: 6vmax;
-}
-
-#section1 
-{
-	width: 100vw;
+#section1 {
 	height: 100vh;
-	background-color: yellow;
+	background-color: #53212b;
+	color: #fff;
+	text-align: right;
+	padding: 5vw;
+	padding-top: 15vh;
+}
+
+.right-text {
+	margin-left: auto;
+	margin-right: 0;
+	max-width: 60vw;
+	font-size: 1.8rem;
 }
 
 #section2 {
-	width: 100vw;
 	height: 100vh;
-	background-color: aquamarine;
+	background-color: #20254B;
+	padding: 5vw;
+	color: white;
+	padding-top: 15vh;
+}
+
+.left-text {
+	max-width: 60vw;
+	font-size: 1.8rem;
 }
 
 #section3 {
-	width: 100vw;
 	height: 100vh;
-	background-color: orangered;
+	background-color: #bd3944;
+	text-align: right;
+	padding: 5vw;
+	padding-top: 15vh;
+}
+
+.card
+{
+	display: inline-block;
+	overflow: visible !important;
+	position: static;
+	font-size: 1.4rem;
+	width: 20rem;
+}
+.card-body
+{
+	background-color: red;
+}
+
+.card-img-top {
+	background-color: #2e3436;
+}
+
+.card h1
+{
+	font-size: 2.7rem;
+}
+
+footer {
+	text-align: center;
+	color: #fff;
+	height: 10vh;
+	display: flex;
+	justify-content: normal;
 }
 
 footer {
@@ -64,28 +114,4 @@ footer {
 	flex-direction: column;
 	text-align: center;
 	font-size: 3vmin;
-}
-
-.showtext 
-{
-	display: block;
-	animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
-}
-
-.hidetext 
-{
-	opacity: 0;
-	transform: translate(0, 100%);
-}
-
-@keyframes reveal {
-	0% 
-	{
-		transform: translate(0, 100%);
-	}
-
-	100% 
-	{
-		transform: translate(0, 0);
-	}
 }
