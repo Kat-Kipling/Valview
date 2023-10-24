@@ -2,6 +2,11 @@ body {
 	font-size: 62.5%;
 }
 
+main
+{
+	font-size: 1.8rem;
+}
+
 #welcome 
 {
 	background-color: #fd4556;

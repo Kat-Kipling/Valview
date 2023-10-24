@@ -71,6 +71,7 @@
     <Content Include="css\styles.css" />
     <Content Include="images\logo.png" />
     <Content Include="images\profile-pics\Default_Profile.png" />
+    <Content Include="images\profile-pics\jinx-arcane.jpg" />
     <Content Include="images\tournaments\VCT_2023_Masters_Tokyo.png" />
     <Content Include="images\tournaments\VCT_Champions_2023.png" />
     <Content Include="js\javascript.js" />
@@ -88,10 +89,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\localhost\Reference.map">
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\localhost\ValoViewAPI.disco" />
     <Content Include="Web.config" />
   </ItemGroup>

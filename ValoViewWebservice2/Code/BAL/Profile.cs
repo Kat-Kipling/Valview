@@ -21,8 +21,8 @@ namespace ValoViewWebservice.Code.BAL
         {
             List<String> details = DataAccess.getUserDetailsByName(username);
             id = Convert.ToInt32(details[0]);
-            username = details[1];
-            password = details[2];
+            this.username = username;
+            this.password = details[2];
             firstName = details[3];
             lastName = details[4];
             pronouns = details[5];
@@ -36,16 +36,14 @@ namespace ValoViewWebservice.Code.BAL
 
         public List<string> getDetails()
         {
-            List<String> details = new List<string>();
-            var properties = this.GetType().GetProperties();
-            foreach ( var property in properties ) 
-            {
-                if (property.GetValue(this, null) is string)
-                {
-                    details.Add((string)property.GetValue(this, null));
-                }
-            }
-
+            List<String> details = new List<string>(7);
+            details.Add(id.ToString());
+            details.Add(username);
+            details.Add(password);
+            details.Add(firstName);
+            details.Add(lastName);
+            details.Add(pronouns);
+            details.Add(pfpUrl);
             return details;
         }
     }

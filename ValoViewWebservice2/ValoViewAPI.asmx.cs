@@ -2,6 +2,7 @@
 using System.Data;
 using System.Web.Services;
 using ValoViewWebservice.App_Code.BAL;
+using ValoViewWebservice.App_Code.DAL;
 using ValoViewWebservice.Code.BAL;
 
 namespace ValoViewWebservice
