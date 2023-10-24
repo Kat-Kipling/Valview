@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
+using ValoViewWebservice.App_Code.DAL;
 
 namespace ValoViewWebservice.App_Code.BAL
 {
@@ -16,5 +18,10 @@ namespace ValoViewWebservice.App_Code.BAL
         public string mainRole { get; set; }
         public string secondaryRole { get; set; }
         public string mainAgent { get; set; }
+
+        public DataSet getAllPlayers()
+        {
+            return DataAccess.getAllPlayers();
+        }
     }
 }
