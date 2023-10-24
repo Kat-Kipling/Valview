@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Web.Services;
 using ValoViewWebservice.App_Code.BAL;
 using ValoViewWebservice.Code.BAL;
@@ -35,6 +36,13 @@ namespace ValoViewWebservice
         public int attemptSignIn(string username, string password)
         {
             return Profile.attemptLogin(username, password);
+        }
+
+        [WebMethod]
+        public List<string> getUserDetails(string username)
+        {
+            Profile userAccount = new Profile(username);
+            return userAccount.getDetails();
         }
     }
 }

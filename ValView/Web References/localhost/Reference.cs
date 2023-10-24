@@ -36,6 +36,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback attemptSignInOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getUserDetailsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -82,6 +84,9 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event attemptSignInCompletedEventHandler attemptSignInCompleted;
+        
+        /// <remarks/>
+        public event getUserDetailsCompletedEventHandler getUserDetailsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -167,6 +172,35 @@ namespace ValView.localhost {
             if ((this.attemptSignInCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.attemptSignInCompleted(this, new attemptSignInCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getUserDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getUserDetails(string username) {
+            object[] results = this.Invoke("getUserDetails", new object[] {
+                        username});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getUserDetailsAsync(string username) {
+            this.getUserDetailsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void getUserDetailsAsync(string username, object userState) {
+            if ((this.getUserDetailsOperationCompleted == null)) {
+                this.getUserDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUserDetailsOperationCompleted);
+            }
+            this.InvokeAsync("getUserDetails", new object[] {
+                        username}, this.getUserDetailsOperationCompleted, userState);
+        }
+        
+        private void OngetUserDetailsOperationCompleted(object arg) {
+            if ((this.getUserDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getUserDetailsCompleted(this, new getUserDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -263,6 +297,32 @@ namespace ValView.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getUserDetailsCompletedEventHandler(object sender, getUserDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
             }
         }
     }

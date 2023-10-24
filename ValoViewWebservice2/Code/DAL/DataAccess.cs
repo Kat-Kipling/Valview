@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.OleDb;
 using System.Data;
+using System.Drawing;
 
 namespace ValoViewWebservice.App_Code.DAL
 {
@@ -83,6 +84,34 @@ namespace ValoViewWebservice.App_Code.DAL
 
             }
             return userID;
+        }
+
+        public static List<String> getUserDetailsByName(string usernameToFind)
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlStr = "SELECT * " +
+                "FROM tblUsers " +
+                "WHERE tblUsers.[Username] = '" + usernameToFind + "';";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            List<String> userDetails = new List<String>(7);
+            while (reader.Read())
+            {
+                userDetails.Add(reader.GetValue(0).ToString());
+                userDetails.Add(reader.GetString(1));
+                userDetails.Add(reader.GetString(2));
+                userDetails.Add(reader.GetString(3));
+                userDetails.Add(reader.GetString(4));
+                userDetails.Add(reader.GetString(5));
+                userDetails.Add(reader.GetString(6));
+            }
+            reader.Close();
+            conn.Close();
+            return userDetails;
         }
     }
 }
