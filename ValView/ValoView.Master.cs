@@ -11,7 +11,40 @@ namespace ValView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if(!IsPostBack)
+            {
+                try
+                {
+                    if (Session["username"] == null) //true if not signed in
+                    {
+                        //Show login link
+                        lbtnLogin.Visible = true;
+                        //And links to see teams, players and tournaments
+                        lbtnTeams.Visible = true;
+                        lbtnPlayers.Visible = true;
+                        lbtnTournaments.Visible = true;
+                        //but don't show logout option, or user profile option.
+                        lbtnLogOut.Visible = false;
+                        lbtnUserProfile.Visible = false;
+                    }
+                    else
+                    {
+                        //Don't show login link
+                        lbtnLogin.Visible = false;
+                        //But show links to see teams, players and tournaments
+                        lbtnTeams.Visible = true;
+                        lbtnPlayers.Visible = true;
+                        lbtnTournaments.Visible = true;
+                        //And logout option and user profile option.
+                        lbtnLogOut.Visible = true;
+                        lbtnUserProfile.Visible = true;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
         protected void btnUserProfileClick(object sender, EventArgs e)

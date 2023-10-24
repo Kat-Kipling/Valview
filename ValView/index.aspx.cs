@@ -16,7 +16,7 @@ namespace ValView
 
         protected void btnUserProfileClick(object sender, EventArgs e)
         {
-            Response.Redirect("~/Admin/Account.aspx"), true);
+            Response.Redirect("~/Admin/Account.aspx", true);
         }
 
         protected void btnLoginClick(object sender, EventArgs e)
