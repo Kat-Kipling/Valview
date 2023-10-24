@@ -40,23 +40,23 @@
 									</button>
 									<ul class="dropdown-menu">
 										<li>
-											<asp:LinkButton class="nav-link" ID="lbtnUserProfile" runat="server">User</asp:LinkButton>
+											<asp:LinkButton class="nav-link" ID="lbtnUserProfile" runat="server" OnClientClick="btnUserProfileClick" PostBackUrl="~/Admin/Account.aspx">User</asp:LinkButton>
 										</li>
 
 										<li>
-											<asp:LinkButton class="nav-link" ID="lbtnLogin" runat="server" PostBackUrl="~/Login.aspx">Login</asp:LinkButton>
+											<asp:LinkButton class="nav-link" ID="lbtnLogin" runat="server" OnClientClick="btnLoginClick" PostBackUrl="~/Login.aspx">Login</asp:LinkButton>
 										</li>
 
 										<li>
-											<asp:LinkButton class="nav-link" ID="lbtnTournaments" runat="server" PostBackUrl="~/ViewTournaments.aspx">View Tournaments</asp:LinkButton>
+											<asp:LinkButton class="nav-link" ID="lbtnTournaments" runat="server" OnClientClick="btnTournamentsClick" PostBackUrl="~/ViewTournaments.aspx">View Tournaments</asp:LinkButton>
 										</li>
 
 										<li>
-											<asp:LinkButton class="nav-link" ID="lbtnTeams" runat="server" PostBackUrl="~/ViewTeams.aspx">View Teams</asp:LinkButton>
+											<asp:LinkButton class="nav-link" ID="lbtnTeams" runat="server" OnClientClick="btnTeamsClick" PostBackUrl="~/ViewTeams.aspx">View Teams</asp:LinkButton>
 										</li>
 
 										<li>
-											<asp:LinkButton class="nav-link" ID="lbtnPlayers" runat="server" PostBackUrl="~/ViewPlayers.aspx">View Players</asp:LinkButton>
+											<asp:LinkButton class="nav-link" ID="lbtnPlayers" runat="server" OnClientClick="btnPlayersClick" PostBackUrl="~/ViewPlayers.aspx">View Players</asp:LinkButton>
 										</li>
 								
 										<li>

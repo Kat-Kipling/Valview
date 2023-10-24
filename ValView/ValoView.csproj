@@ -88,11 +88,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\ValoViewAPI\Reference.map">
+    <Content Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <None Include="Web References\ValoViewAPI\ValoViewAPI.disco" />
+    <None Include="Web References\localhost\ValoViewAPI.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +179,7 @@
     <Compile Include="ValoView.Master.designer.cs">
       <DependentUpon>ValoView.Master</DependentUpon>
     </Compile>
-    <Compile Include="Web References\ValoViewAPI\Reference.cs">
+    <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -188,7 +188,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="ValoView.Master" />
-    <None Include="Web References\ValoViewAPI\ValoViewAPI.wsdl" />
+    <None Include="Web References\localhost\ValoViewAPI.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,14 +208,14 @@
   <ItemGroup>
     <WebReferenceUrl Include="https://localhost:44324/ValoViewAPI.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ValoViewAPI\</RelPath>
+      <RelPath>Web References\localhost\</RelPath>
       <UpdateFromURL>https://localhost:44324/ValoViewAPI.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ValView_ValoViewAPI_ValoViewAPI</CachedSettingsPropName>
+      <CachedSettingsPropName>ValView_localhost_ValoViewAPI</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

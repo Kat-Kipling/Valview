@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ValView.ValoViewAPI;
+using ValView.localhost;
 
 namespace ValView
 {
@@ -15,7 +15,7 @@ namespace ValView
         {
             if (!IsPostBack)
             {
-                ValoViewAPI.ValoViewAPI valoViewData = new ValoViewAPI.ValoViewAPI();
+                localhost.ValoViewAPI valoViewData = new localhost.ValoViewAPI();
                 DataSet ds = valoViewData.getAllTournaments();
 
                 reptTournaments.DataSource = ds.Tables["dtTournaments"];

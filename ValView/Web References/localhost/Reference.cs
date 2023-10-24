@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace ValView.ValoViewAPI {
+namespace ValView.localhost {
     using System.Diagnostics;
     using System;
     using System.Xml.Serialization;
@@ -40,7 +40,7 @@ namespace ValView.ValoViewAPI {
         
         /// <remarks/>
         public ValoViewAPI() {
-            this.Url = global::ValView.Properties.Settings.Default.ValView_ValoViewAPI_ValoViewAPI;
+            this.Url = global::ValView.Properties.Settings.Default.ValView_localhost_ValoViewAPI;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

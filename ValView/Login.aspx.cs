@@ -17,11 +17,12 @@ namespace ValView
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
-            ValoViewAPI.ValoViewAPI viewAPI = new ValoViewAPI.ValoViewAPI();
+            localhost.ValoViewAPI viewAPI = new localhost.ValoViewAPI();
             int userId = viewAPI.attemptSignIn(txtUsername.Text, txtPassword.Text);
 
             if (userId != -1)
             {
+                Session["username"] = txtUsername.Text;
                 FormsAuthentication.RedirectFromLoginPage(txtUsername.Text, true);
             }
             else

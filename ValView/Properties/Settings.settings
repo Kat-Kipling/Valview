@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ValView.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ValView_ValoViewAPI_ValoViewAPI" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="ValView_localhost_ValoViewAPI" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://localhost:44324/ValoViewAPI.asmx</Value>
     </Setting>
   </Settings>

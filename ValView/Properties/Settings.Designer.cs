@@ -27,9 +27,9 @@ namespace ValView.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44324/ValoViewAPI.asmx")]
-        public string ValView_ValoViewAPI_ValoViewAPI {
+        public string ValView_localhost_ValoViewAPI {
             get {
-                return ((string)(this["ValView_ValoViewAPI_ValoViewAPI"]));
+                return ((string)(this["ValView_localhost_ValoViewAPI"]));
             }
         }
     }
