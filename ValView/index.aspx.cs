@@ -13,5 +13,30 @@ namespace ValView
         {
 
         }
+
+        protected void btnUserProfileClick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Admin/Account.aspx"), true);
+        }
+
+        protected void btnLoginClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx", true);
+        }
+
+        protected void btnTournamentsClick(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewTournaments.aspx", true);
+        }
+
+        protected void btnTeamsClick(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewTeams.aspx", true);
+        }
+
+        protected void btnPlayersClick(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewPlayers.aspx", true);
+        }
     }
 }
