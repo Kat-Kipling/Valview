@@ -53,7 +53,7 @@
 
 							<!-- Second list; dynamic content for user sign-in and admin control -->
 							<div class="dropdown">
-								<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Dropdown Example
+								<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Navigation and User Menu
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
