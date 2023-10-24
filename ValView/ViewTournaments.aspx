@@ -18,5 +18,6 @@
                 </div>
             </ItemTemplate>
         </asp:Repeater>
+        <asp:Label runat="server" ID="lblOutput"></asp:Label>
     </div>
 </asp:Content>

@@ -23,8 +23,10 @@
                                 </div>
 
                                 <div class="form-group d-grid gap-2 mt-3">
-                                    <asp:Button ID="btnSignIn" runat="server" Text="Log in" CssClass="btn btn-primary btn-block btn-lg"/>
+                                    <asp:Button ID="btnSignIn" runat="server" Text="Log in" CssClass="btn btn-primary btn-block btn-lg" OnClick="btnSignIn_Click"/>
                                 </div>
+
+                                <asp:Label ID="lblOutput" runat="server"></asp:Label>
                             </div>
                         </div>
                     </div>

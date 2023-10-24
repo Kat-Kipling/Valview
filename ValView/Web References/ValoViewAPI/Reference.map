@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:58501/ValoViewAPI.asmx?wsdl" filename="ValoViewAPI.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://localhost:58501/ValoViewAPI.asmx?disco" filename="ValoViewAPI.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://localhost:44324/ValoViewAPI.asmx?wsdl" filename="ValoViewAPI.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="https://localhost:44324/ValoViewAPI.asmx?disco" filename="ValoViewAPI.disco" />
   </Results>
 </DiscoveryClientResultsFile>

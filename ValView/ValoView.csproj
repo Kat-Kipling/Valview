@@ -16,8 +16,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44365</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -207,10 +206,10 @@
     <Folder Include="images\teams\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:58501/ValoViewAPI.asmx">
+    <WebReferenceUrl Include="https://localhost:44324/ValoViewAPI.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\ValoViewAPI\</RelPath>
-      <UpdateFromURL>http://localhost:58501/ValoViewAPI.asmx</UpdateFromURL>
+      <UpdateFromURL>https://localhost:44324/ValoViewAPI.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

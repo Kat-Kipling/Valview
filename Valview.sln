@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValoView", "ValView\ValoView.csproj", "{EB84BE8A-26C7-4D67-991E-32C7FD09313E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValoViewWebservice", "ValoViewWebservice\ValoViewWebservice.csproj", "{01154051-0653-48BF-8B3F-1F5082471182}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValoViewWebservice", "ValoViewWebservice2\ValoViewWebservice.csproj", "{AFD09304-1262-40FD-B01E-88885650BB8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{EB84BE8A-26C7-4D67-991E-32C7FD09313E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB84BE8A-26C7-4D67-991E-32C7FD09313E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB84BE8A-26C7-4D67-991E-32C7FD09313E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01154051-0653-48BF-8B3F-1F5082471182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01154051-0653-48BF-8B3F-1F5082471182}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01154051-0653-48BF-8B3F-1F5082471182}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01154051-0653-48BF-8B3F-1F5082471182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD09304-1262-40FD-B01E-88885650BB8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD09304-1262-40FD-B01E-88885650BB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD09304-1262-40FD-B01E-88885650BB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD09304-1262-40FD-B01E-88885650BB8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

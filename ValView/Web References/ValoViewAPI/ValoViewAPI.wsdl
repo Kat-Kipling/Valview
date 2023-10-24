@@ -151,10 +151,10 @@
   </wsdl:binding>
   <wsdl:service name="ValoViewAPI">
     <wsdl:port name="ValoViewAPISoap" binding="tns:ValoViewAPISoap">
-      <soap:address location="http://localhost:58501/ValoViewAPI.asmx" />
+      <soap:address location="https://localhost:44324/ValoViewAPI.asmx" />
     </wsdl:port>
     <wsdl:port name="ValoViewAPISoap12" binding="tns:ValoViewAPISoap12">
-      <soap12:address location="http://localhost:58501/ValoViewAPI.asmx" />
+      <soap12:address location="https://localhost:44324/ValoViewAPI.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
