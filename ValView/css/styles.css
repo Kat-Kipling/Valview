@@ -79,6 +79,36 @@ header
 	position: static;
 }
 
+.card-wrapper
+{
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.repeating-card-wrapper
+{
+	display: flex;
+	justify-content: center;
+}
+
+.tournament-card
+{
+	padding: 1vw;
+	border: 1px solid #333;
+	display: flex;
+	margin: 1vw;
+	width: 25vw;
+	min-width: 320px;
+	min-height: 300px;
+	max-width: 20vw;
+	text-align: center;
+	height: 720px;
+}
+
 .profile-picture {
 	width: 20%;
 	height: 20%;

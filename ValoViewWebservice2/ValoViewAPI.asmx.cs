@@ -37,7 +37,11 @@ namespace ValoViewWebservice
         {
             return Profile.attemptLogin(username, password);
         }
-
+        /// <summary>
+        /// Takes the name of a user and gets all the details from the database for that user.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>Array of strings; each element is a single attribute of a Profile.</returns>
         [WebMethod]
         public List<string> getUserDetails(string username)
         {
