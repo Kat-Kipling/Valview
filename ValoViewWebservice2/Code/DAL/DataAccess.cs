@@ -36,7 +36,8 @@ namespace ValoViewWebservice.App_Code.DAL
                 "INNER JOIN tblTournaments AS TOURN ON S.[Tournament ID] = TOURN.[Tournament ID]) " +
                 "LEFT JOIN tblTeams AS T1 ON S.[Team One ID] = T1.[Team ID]) " +
                 "LEFT JOIN tblTeams AS T2 ON S.[Team Two ID] = T2.[Team ID]) " +
-                "LEFT JOIN tblTeams AS T3 ON S.[Winning Team ID] = T3.[Team ID];";
+                "LEFT JOIN tblTeams AS T3 ON S.[Winning Team ID] = T3.[Team ID] " +
+                "WHERE TOURN.[Tournament Name] = '" + tournamentName + "';";
 
             OleDbDataAdapter daTournamentMatches = new OleDbDataAdapter(sqlCmd, conn);
             daTournamentMatches.Fill(ds, "dtTournamentMatches");
@@ -88,8 +89,6 @@ namespace ValoViewWebservice.App_Code.DAL
 
         public static List<String> getUserDetailsByName(string usernameToFind)
         {
-            DataSet ds = new DataSet();
-
             OleDbConnection conn = openConnection();
             string sqlStr = "SELECT * " +
                 "FROM tblUsers " +
@@ -126,6 +125,31 @@ namespace ValoViewWebservice.App_Code.DAL
             conn.Close();
 
             return ds;
+        }
+
+        public static List<string> getTournamentInfo(string tournamentName)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "SELECT * " +
+                "FROM tblTournaments " +
+                "WHERE tblTournaments.[Tournament Name] = '" + tournamentName + "';";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            List<String> tournamentInfo = new List<String>(6);
+            while (reader.Read())
+            {
+                tournamentInfo.Add(reader.GetValue(0).ToString());
+                tournamentInfo.Add(reader.GetString(1));
+                tournamentInfo.Add(reader.GetValue(2).ToString());
+                tournamentInfo.Add(reader.GetValue(3).ToString());
+                tournamentInfo.Add(reader.GetString(4));
+                tournamentInfo.Add(reader.GetString(5));
+            }
+            reader.Close();
+            conn.Close();
+            return tournamentInfo;
         }
     }
 }

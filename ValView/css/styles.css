@@ -2,9 +2,10 @@ body {
 	font-size: 62.5%;
 }
 
-main
-{
+main {
 	font-size: 1.8rem;
+	background: rgb(253,69,86);
+	background: linear-gradient(180deg, rgba(253,69,86,1) 0%, rgba(83,33,43,1) 35%);
 }
 
 #welcome 
@@ -100,8 +101,7 @@ header
 	justify-content: center;
 }
 
-.tournament-card
-{
+.tournament-card {
 	padding: 1vw;
 	border: 1px solid #333;
 	display: flex;
@@ -111,6 +111,8 @@ header
 	min-height: 300px;
 	max-width: 20vw;
 	text-align: center;
+	background-color: #20254B;
+	color: white;
 }
 
 .profile-picture {
