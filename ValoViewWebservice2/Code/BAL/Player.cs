@@ -19,7 +19,7 @@ namespace ValoViewWebservice.App_Code.BAL
         public string secondaryRole { get; set; }
         public string mainAgent { get; set; }
 
-        public DataSet getAllPlayers()
+        public static DataSet getAllPlayers()
         {
             return DataAccess.getAllPlayers();
         }

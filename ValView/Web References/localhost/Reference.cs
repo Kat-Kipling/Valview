@@ -40,6 +40,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback getUserDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllPlayersOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -92,6 +94,9 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event getUserDetailsCompletedEventHandler getUserDetailsCompleted;
+        
+        /// <remarks/>
+        public event getAllPlayersCompletedEventHandler getAllPlayersCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -235,6 +240,33 @@ namespace ValView.localhost {
             if ((this.getUserDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getUserDetailsCompleted(this, new getUserDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllPlayers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getAllPlayers() {
+            object[] results = this.Invoke("getAllPlayers", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllPlayersAsync() {
+            this.getAllPlayersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllPlayersAsync(object userState) {
+            if ((this.getAllPlayersOperationCompleted == null)) {
+                this.getAllPlayersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllPlayersOperationCompleted);
+            }
+            this.InvokeAsync("getAllPlayers", new object[0], this.getAllPlayersOperationCompleted, userState);
+        }
+        
+        private void OngetAllPlayersOperationCompleted(object arg) {
+            if ((this.getAllPlayersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllPlayersCompleted(this, new getAllPlayersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -383,6 +415,32 @@ namespace ValView.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getAllPlayersCompletedEventHandler(object sender, getAllPlayersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllPlayersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllPlayersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

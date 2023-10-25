@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,13 @@ namespace ValView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                localhost.ValoViewAPI valoViewAPI = new localhost.ValoViewAPI();
+                DataSet players = valoViewAPI.getAllPlayers();
+                gvPlayers.DataSource = players;
+                gvPlayers.DataBind();
+            }
         }
     }
 }

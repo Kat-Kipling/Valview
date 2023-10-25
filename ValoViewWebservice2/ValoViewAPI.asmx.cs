@@ -57,5 +57,11 @@ namespace ValoViewWebservice
             Profile userAccount = new Profile(username);
             return userAccount.getDetails();
         }
+
+        [WebMethod]
+        public DataSet getAllPlayers()
+        {
+            return Player.getAllPlayers();
+        }
     }
 }

@@ -118,7 +118,8 @@ namespace ValoViewWebservice.App_Code.DAL
             DataSet ds = new DataSet();
 
             OleDbConnection conn = openConnection();
-            string sqlStr = "SELECT * FROM tblPlayers";
+            string sqlStr = "SELECT * " +
+                "FROM tblPlayers";
 
             OleDbDataAdapter daPlayers = new OleDbDataAdapter(sqlStr, conn);
             daPlayers.Fill(ds, "dtPlayers");
