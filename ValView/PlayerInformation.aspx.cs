@@ -17,13 +17,16 @@ namespace ValView
             {
                 ValoViewAPI api = new ValoViewAPI();
                 List<String> playerDetails = api.getPlayerDetails(Convert.ToInt32(Request.QueryString["PlayerID"])).ToList();
+                int playerId = Convert.ToInt32(Request.QueryString["PlayerID"]);
 
-                foreach (var item in playerDetails)
-                {
-                    Debug.WriteLine(item);
-                }
-
-                Debug.WriteLine("idk");
+                lblUsername.Text += playerDetails[1];
+                lblTeam.Text += playerDetails[2];
+                lblCountry.Text += playerDetails[3];
+                lblRank.Text += playerDetails[4];
+                lblDivision.Text += playerDetails[5];
+                lblMainRole.Text += playerDetails[6];
+                lblSecRole.Text += playerDetails[7];
+                lblMainAgent.Text += playerDetails[8];
             }
         }
     }
