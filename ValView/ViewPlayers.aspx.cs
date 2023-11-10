@@ -16,9 +16,27 @@ namespace ValView
             {
                 localhost.ValoViewAPI valoViewAPI = new localhost.ValoViewAPI();
                 DataSet players = valoViewAPI.getAllPlayers();
-                gvPlayers.DataSource = players;
-                gvPlayers.DataBind();
+                
+                reptPlayers.DataSource = players;
+                reptPlayers.DataBind();
             }
+        }
+
+        protected void reptPlayers_ItemCommand(Object sender, RepeaterCommandEventArgs e)
+        {
+
+        }
+
+        protected void btnViewPlayer_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
+
+            HiddenField playerId = (HiddenField)item.FindControl("playerID");
+            string ah = playerId.Value;
+
+            localhost.ValoViewAPI valoViewAPI = new localhost.ValoViewAPI();
+            Response.Redirect("PlayerInformation.aspx?PlayerID=" + ah);
         }
     }
 }

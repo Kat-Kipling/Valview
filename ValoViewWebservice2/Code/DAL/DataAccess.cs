@@ -118,14 +118,51 @@ namespace ValoViewWebservice.App_Code.DAL
             DataSet ds = new DataSet();
 
             OleDbConnection conn = openConnection();
-            string sqlStr = "SELECT * " +
-                "FROM tblPlayers";
+            string sqlStr = "SELECT tblPlayers.[ID], tblPlayers.[Username], tblTeams.[Team Name] " +
+                "FROM(tblPlayers " +
+                "INNER JOIN tblTeams ON tblPlayers.Team = tblTeams.[Team ID])";
 
             OleDbDataAdapter daPlayers = new OleDbDataAdapter(sqlStr, conn);
             daPlayers.Fill(ds, "dtPlayers");
             conn.Close();
 
             return ds;
+        }
+
+        public static List<String> getPlayerInfo(int id)
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlStr = "SELECT p.ID, p.Username, t.[Team Name] AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, IIf(IsNull(mr.[Role Name]), '', mr.[Role Name]) AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent, p.[Picture URL] " +
+                "FROM(((((tblPlayers AS p " +
+                "INNER JOIN tblTeams AS t ON p.Team = t.[Team ID]) " +
+                "INNER JOIN tblRanks AS r ON p.Rank = r.ID) " +
+                "LEFT JOIN tblDivisions AS d ON p.Division = d.ID) " +
+                "LEFT JOIN tblAgentRoles AS mr ON p.[Main Role] = mr.ID) " +
+                "LEFT JOIN tblAgentRoles AS sr ON p.[Secondary Role] = sr.ID) " +
+                "INNER JOIN tblAgents AS a ON p.[Main Agent] = a.ID " +
+                "WHERE p.ID = " + id + ";";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            List<string> playerInfo = new List<string>(9);
+            while (reader.Read())
+            {
+                playerInfo.Add(reader.GetValue(0).ToString());
+                playerInfo.Add(reader.GetString(1));
+                playerInfo.Add(reader.GetString(2));
+                playerInfo.Add(reader.GetString(3));
+                playerInfo.Add(reader.GetString(4));
+                playerInfo.Add(reader.GetString(5));
+                playerInfo.Add(reader.GetString(6));
+                playerInfo.Add(reader.GetString(7));
+                playerInfo.Add(reader.GetString(8));
+            }
+            reader.Close();
+            conn.Close();
+            return playerInfo;
         }
 
         public static List<string> getTournamentInfo(string tournamentName)

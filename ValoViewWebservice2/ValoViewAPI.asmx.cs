@@ -63,5 +63,12 @@ namespace ValoViewWebservice
         {
             return Player.getAllPlayers();
         }
+
+        [WebMethod]
+        public List<string> getPlayerDetails(int id)
+        {
+            Player player = new Player(id);
+            return player.getDetails();
+        }
     }
 }
