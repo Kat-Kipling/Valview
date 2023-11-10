@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\BAL\Match.cs" />
-    <Compile Include="Code\BAL\Player.cs" />
+    <Compile Include="Code\BAL\Player.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Code\BAL\Profile.cs" />
     <Compile Include="Code\BAL\Series.cs" />
     <Compile Include="Code\BAL\Tournament.cs" />

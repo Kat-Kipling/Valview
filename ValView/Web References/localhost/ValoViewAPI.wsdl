@@ -40,6 +40,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getTournamentId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tournamentName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTournamentIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTournamentIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="attemptSignIn">
         <s:complexType>
           <s:sequence>
@@ -74,6 +88,23 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="getAllPlayers">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllPlayersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllPlayersResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getTournamentSeriesByNameSoapIn">
@@ -88,6 +119,12 @@
   <wsdl:message name="getAllTournamentsSoapOut">
     <wsdl:part name="parameters" element="tns:getAllTournamentsResponse" />
   </wsdl:message>
+  <wsdl:message name="getTournamentIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getTournamentId" />
+  </wsdl:message>
+  <wsdl:message name="getTournamentIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getTournamentIdResponse" />
+  </wsdl:message>
   <wsdl:message name="attemptSignInSoapIn">
     <wsdl:part name="parameters" element="tns:attemptSignIn" />
   </wsdl:message>
@@ -100,6 +137,12 @@
   <wsdl:message name="getUserDetailsSoapOut">
     <wsdl:part name="parameters" element="tns:getUserDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="getAllPlayersSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllPlayers" />
+  </wsdl:message>
+  <wsdl:message name="getAllPlayersSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllPlayersResponse" />
+  </wsdl:message>
   <wsdl:portType name="ValoViewAPISoap">
     <wsdl:operation name="getTournamentSeriesByName">
       <wsdl:input message="tns:getTournamentSeriesByNameSoapIn" />
@@ -109,6 +152,10 @@
       <wsdl:input message="tns:getAllTournamentsSoapIn" />
       <wsdl:output message="tns:getAllTournamentsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getTournamentId">
+      <wsdl:input message="tns:getTournamentIdSoapIn" />
+      <wsdl:output message="tns:getTournamentIdSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="attemptSignIn">
       <wsdl:input message="tns:attemptSignInSoapIn" />
       <wsdl:output message="tns:attemptSignInSoapOut" />
@@ -116,6 +163,10 @@
     <wsdl:operation name="getUserDetails">
       <wsdl:input message="tns:getUserDetailsSoapIn" />
       <wsdl:output message="tns:getUserDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPlayers">
+      <wsdl:input message="tns:getAllPlayersSoapIn" />
+      <wsdl:output message="tns:getAllPlayersSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ValoViewAPISoap" type="tns:ValoViewAPISoap">
@@ -138,6 +189,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTournamentId">
+      <soap:operation soapAction="http://tempuri.org/getTournamentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="attemptSignIn">
       <soap:operation soapAction="http://tempuri.org/attemptSignIn" style="document" />
       <wsdl:input>
@@ -149,6 +209,15 @@
     </wsdl:operation>
     <wsdl:operation name="getUserDetails">
       <soap:operation soapAction="http://tempuri.org/getUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPlayers">
+      <soap:operation soapAction="http://tempuri.org/getAllPlayers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -177,6 +246,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTournamentId">
+      <soap12:operation soapAction="http://tempuri.org/getTournamentId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="attemptSignIn">
       <soap12:operation soapAction="http://tempuri.org/attemptSignIn" style="document" />
       <wsdl:input>
@@ -188,6 +266,15 @@
     </wsdl:operation>
     <wsdl:operation name="getUserDetails">
       <soap12:operation soapAction="http://tempuri.org/getUserDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPlayers">
+      <soap12:operation soapAction="http://tempuri.org/getAllPlayers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

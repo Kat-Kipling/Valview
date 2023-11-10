@@ -34,6 +34,14 @@ namespace ValoViewWebservice
         }
 
         [WebMethod]
+        public string getTournamentId(string tournamentName)
+        {
+
+            Tournament tournament = new Tournament(tournamentName);
+            return tournament.id.ToString();
+        }
+
+        [WebMethod]
         public int attemptSignIn(string username, string password)
         {
             return Profile.attemptLogin(username, password);
@@ -48,6 +56,12 @@ namespace ValoViewWebservice
         {
             Profile userAccount = new Profile(username);
             return userAccount.getDetails();
+        }
+
+        [WebMethod]
+        public DataSet getAllPlayers()
+        {
+            return Player.getAllPlayers();
         }
     }
 }

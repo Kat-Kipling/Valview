@@ -24,7 +24,7 @@ namespace ValView.localhost {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="ValoViewAPISoap", Namespace="http://tempuri.org/")]
@@ -34,9 +34,13 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback getAllTournamentsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTournamentIdOperationCompleted;
+        
         private System.Threading.SendOrPostCallback attemptSignInOperationCompleted;
         
         private System.Threading.SendOrPostCallback getUserDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAllPlayersOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -83,10 +87,16 @@ namespace ValView.localhost {
         public event getAllTournamentsCompletedEventHandler getAllTournamentsCompleted;
         
         /// <remarks/>
+        public event getTournamentIdCompletedEventHandler getTournamentIdCompleted;
+        
+        /// <remarks/>
         public event attemptSignInCompletedEventHandler attemptSignInCompleted;
         
         /// <remarks/>
         public event getUserDetailsCompletedEventHandler getUserDetailsCompleted;
+        
+        /// <remarks/>
+        public event getAllPlayersCompletedEventHandler getAllPlayersCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -141,6 +151,35 @@ namespace ValView.localhost {
             if ((this.getAllTournamentsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getAllTournamentsCompleted(this, new getAllTournamentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getTournamentId(string tournamentName) {
+            object[] results = this.Invoke("getTournamentId", new object[] {
+                        tournamentName});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTournamentIdAsync(string tournamentName) {
+            this.getTournamentIdAsync(tournamentName, null);
+        }
+        
+        /// <remarks/>
+        public void getTournamentIdAsync(string tournamentName, object userState) {
+            if ((this.getTournamentIdOperationCompleted == null)) {
+                this.getTournamentIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTournamentIdOperationCompleted);
+            }
+            this.InvokeAsync("getTournamentId", new object[] {
+                        tournamentName}, this.getTournamentIdOperationCompleted, userState);
+        }
+        
+        private void OngetTournamentIdOperationCompleted(object arg) {
+            if ((this.getTournamentIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTournamentIdCompleted(this, new getTournamentIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -205,6 +244,33 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllPlayers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getAllPlayers() {
+            object[] results = this.Invoke("getAllPlayers", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllPlayersAsync() {
+            this.getAllPlayersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllPlayersAsync(object userState) {
+            if ((this.getAllPlayersOperationCompleted == null)) {
+                this.getAllPlayersOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllPlayersOperationCompleted);
+            }
+            this.InvokeAsync("getAllPlayers", new object[0], this.getAllPlayersOperationCompleted, userState);
+        }
+        
+        private void OngetAllPlayersOperationCompleted(object arg) {
+            if ((this.getAllPlayersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllPlayersCompleted(this, new getAllPlayersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -224,11 +290,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getTournamentSeriesByNameCompletedEventHandler(object sender, getTournamentSeriesByNameCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getTournamentSeriesByNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -250,11 +316,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getAllTournamentsCompletedEventHandler(object sender, getAllTournamentsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getAllTournamentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -276,11 +342,37 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getTournamentIdCompletedEventHandler(object sender, getTournamentIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTournamentIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTournamentIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void attemptSignInCompletedEventHandler(object sender, attemptSignInCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class attemptSignInCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -302,11 +394,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getUserDetailsCompletedEventHandler(object sender, getUserDetailsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -323,6 +415,32 @@ namespace ValView.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getAllPlayersCompletedEventHandler(object sender, getAllPlayersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllPlayersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllPlayersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

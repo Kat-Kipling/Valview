@@ -23,9 +23,27 @@ namespace ValView
             }
         }
 
+        protected void reptTournaments_ItemCommand(Object sender, RepeaterCommandEventArgs e)
+        {
+            localhost.ValoViewAPI valoViewAPI = new ValoViewAPI();
+            if (e.CommandName == "btnViewMatches_Click")
+            {
+                
+
+                
+            }
+        }
+
         protected void btnViewMatches_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
 
+            Label label = (Label)item.FindControl("lblTitle");
+            string ah = label.Text;
+
+            localhost.ValoViewAPI valoViewAPI = new ValoViewAPI();
+            Response.Redirect("ViewMatches.aspx?TournName=" + ah);
         }
     }
 }

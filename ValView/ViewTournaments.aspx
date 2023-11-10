@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
         <div class="card-wrapper">
-                <asp:Repeater ID="reptTournaments" runat="server">
+                <asp:Repeater ID="reptTournaments" OnItemCommand="reptTournaments_ItemCommand" runat="server">
                     <ItemTemplate>
                         <div class="card tournament-card">
                             <asp:Image runat="server" ID="imgTournamentLogo" ImageUrl='<%# Eval("Logo URL") %>' class="card-img-top"></asp:Image>
@@ -14,7 +14,7 @@
                                 <p class="card-text"><asp:Label runat="server" ID="lblDescription" Text='<%# Eval("Description") %>'></asp:Label></p>
                                 <p class="card-text"><asp:Label runat="server" ID="lblStartDate" Text='<%# Eval("Start Date") %>'></asp:Label></p>
                                 <p class="card-text"><asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("End Date") %>'></asp:Label></p>
-                                <asp:Button ID="btnViewMatches" Text="View Matches" OnClick="btnViewMatches_Click" runat="server" />
+                                <asp:Button ID="btnViewMatches" Text="View Matches" CssClass="btn btn-primary btn-block btn-lg" OnClick="btnViewMatches_Click" runat="server" />
                             </div>
                         </div>
                     </ItemTemplate>
