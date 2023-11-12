@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,7 +12,6 @@ namespace ValView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
             {
                 try
                 {
@@ -70,6 +70,20 @@ namespace ValView
         protected void btnPlayersClick(object sender, EventArgs e)
         {
             Response.Redirect("ViewPlayers.aspx", true);
+        }
+
+        protected void lbtnLogOut_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+        //Show login link
+        lbtnLogin.Visible = true;
+        //And links to see teams, players and tournaments
+        lbtnTeams.Visible = true;
+        lbtnPlayers.Visible = true;
+        lbtnTournaments.Visible = true;
+        //but don't show logout option, or user profile option.
+        lbtnLogOut.Visible = false;
+        lbtnUserProfile.Visible = false;
         }
     }
 }

@@ -39,15 +39,15 @@
 							<!-- First Unordered List showing sections in page to jump to-->
 							<ul class="navbar-nav me-auto">
 								<li class="nav-item">
-								  <a class="nav-link"  href="#section1">Temp1</a>
+								  <a class="nav-link"  href="#section1">What We Do</a>
 								</li>
 
 								<li class="nav-item">
-								  <a class="nav-link" href="#section2">Temp2</a>
+								  <a class="nav-link" href="#section2">Why Us</a>
 								</li>
 
 								<li class="nav-item">
-								  <a class="nav-link" href="#section3">Temp3</a>
+								  <a class="nav-link" href="#section3">How To Use</a>
 								</li>
 							</ul>
 
@@ -62,7 +62,7 @@
 									</li>
 									
 									<li>
-										<asp:LinkButton class="nav-link" ID="lbtnUserProfile" runat="server" OnClientClick="btnUserProfileClick" PostBackUrl="~/Admin/Account.aspx">User</asp:LinkButton>
+										<asp:LinkButton class="nav-link" ID="lbtnUserProfile" runat="server" OnClientClick="btnUserProfileClick" PostBackUrl="~/Admin/Account.aspx">Admin Panel</asp:LinkButton>
 									</li>
 
 									<li>
@@ -78,7 +78,7 @@
 									</li>
 									
 									<li>
-										<asp:LinkButton class="nav-link" ID="lbtnLogOut" runat="server">Log Out</asp:LinkButton>
+										<asp:LinkButton class="nav-link" ID="lbtnLogOut" runat="server" OnClick="lbtnLogOut_Click">Log Out</asp:LinkButton>
 									</li>
 								</ul>
 							</div>
@@ -89,22 +89,22 @@
 				<main>
 					<div id="section1">
 						<div id="section1-text" class="right-text">
-							<h1>Lorem Ipsum</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque fermentum dui faucibus.</p>
+							<h1>What We Do</h1>
+							<p>We're huge fans of VALORANT E-sports. Tired of slow to update websites, we made our own. Since we make sure we can catch every match, and have our finger on the pulse of the pro scene, you can be sure we update as soon as possible.</p>
 						</div>
 					</div>
 
 					<div id="section2">
 						<div id="section2-text" class="left-text">
-							<h1>Dolor Sit</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod elementum nisi quis eleifend quam adipiscing vitae proin. Habitasse platea dictumst quisque sagittis. Ut consequat semper viverra nam libero justo.</p>
+							<h1>Why Us?</h1>
+							<p>Other sites have outdated designs, are slow to use or even never update! With ValoView, your certain not to be running under outdated information.</p>
 						</div>
 					</div>
 
 					<div id="section3">
 						<div id="section3-text" class="right-text">
-							<h1>Amet</h1>
-							<p>aaaaaa</p>
+							<h1>How to Use</h1>
+							<p>Our site is simple! Click the dropdown menu in the top-right, and select what you want to view. Any further information is just a button click away! Simple as that.</p>
 						</div>
 					</div>
 				</main>

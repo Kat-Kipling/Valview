@@ -40,7 +40,7 @@
 									</button>
 									<ul class="dropdown-menu">
 										<li>
-											<asp:LinkButton class="nav-link" ID="lbtnUserProfile" runat="server" OnClientClick="btnUserProfileClick" PostBackUrl="~/Admin/Account.aspx">User</asp:LinkButton>
+											<asp:LinkButton class="nav-link" ID="lbtnUserProfile" runat="server" OnClientClick="btnUserProfileClick" PostBackUrl="~/Admin/Account.aspx">Admin Panel</asp:LinkButton>
 										</li>
 
 										<li>
@@ -60,7 +60,7 @@
 										</li>
 								
 										<li>
-											<asp:LinkButton class="nav-link" ID="lbtnLogOut" runat="server">Log Out</asp:LinkButton>
+											<asp:LinkButton class="nav-link" ID="lbtnLogOut" runat="server" OnClick="lbtnLogOut_Click">Log Out</asp:LinkButton>
 										</li>
 									</ul>
 								</div>

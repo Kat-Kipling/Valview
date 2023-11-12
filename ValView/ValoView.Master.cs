@@ -71,5 +71,18 @@ namespace ValView
         {
             Response.Redirect("ViewPlayers.aspx", true);
         }
+
+        protected void lbtnLogOut_Click(object sender, EventArgs e)
+        {
+            //Show login link
+            lbtnLogin.Visible = true;
+            //And links to see teams, players and tournaments
+            lbtnTeams.Visible = true;
+            lbtnPlayers.Visible = true;
+            lbtnTournaments.Visible = true;
+            //but don't show logout option, or user profile option.
+            lbtnLogOut.Visible = false;
+            lbtnUserProfile.Visible = false;
+        }
     }
 }

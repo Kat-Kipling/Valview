@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="col">
-                    <asp:Button ID="btnTeamManagement" runat="server" Text="Player Management" CssClass="btn btn-primary btn-block btn-lg" OnClick="btnTeamManagement_Click"/>
+                    <asp:Button ID="btnTeamManagement" runat="server" Text="Team Management" CssClass="btn btn-primary btn-block btn-lg" OnClick="btnTeamManagement_Click"/>
                 </div>
 
                 <div class="col">
