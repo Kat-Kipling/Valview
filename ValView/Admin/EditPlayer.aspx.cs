@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,7 +18,7 @@ namespace ValView.Admin
             if(!IsPostBack)
             {
                 ValoViewAPI valoViewAPI = new ValoViewAPI();
-                DataSet gs = valoViewAPI.getAllPlayerInfo();
+                DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
                 DataSet teams = valoViewAPI.getTeams();
                 DataSet ranks = valoViewAPI.getRanks();
                 DataSet divisions = valoViewAPI.getDivisions();
@@ -25,7 +26,7 @@ namespace ValView.Admin
                 DataSet roles = valoViewAPI.getRoles();
 
 
-                gvPlayers.DataSource = gs.Tables["dtPlayers"];
+                gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
                 gvPlayers.DataBind();
 
                 drpTeam.DataSource = teams.Tables["dtTeams"];
@@ -123,6 +124,9 @@ namespace ValView.Admin
 
                 valoViewAPI.addNewPlayer(name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue);
                 lblOutput.Text = "Player added!";
+                DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
+                gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
+                gvPlayers.DataBind();
             }
             else
             {
@@ -145,12 +149,55 @@ namespace ValView.Admin
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(txtPlayerName.Text) &&
+                !String.IsNullOrEmpty(txtPlayerCountry.Text) &&
+                drpAgent.SelectedValue != "" &&
+                drpMainRole.SelectedValue != "" &&
+                drpTeam.SelectedValue != "" &&
+                drpRank.SelectedValue != "" &&
+                drpDiv.SelectedValue != "" &&
+                drpSecRole.SelectedValue != "")
+            {
+                ValoViewAPI valoViewAPI = new ValoViewAPI();
+                int id = Convert.ToInt32(txtPlayerID.Text);
+                string name = txtPlayerName.Text;
+                string country = txtPlayerCountry.Text;
+                int agentValue = Convert.ToInt32(drpAgent.SelectedItem.Value);
+                int mainRoleValue = Convert.ToInt32((drpMainRole.SelectedItem.Value));
+                int teamValue = Convert.ToInt32(drpTeam.SelectedItem.Value);
+                int rankValue = Convert.ToInt32(drpRank.SelectedItem.Value);
+                int dropDivValue = Convert.ToInt32(drpDiv.SelectedItem.Value);
+                int dropSecRoleValue = Convert.ToInt32((drpSecRole.SelectedItem.Value));
 
+                Debug.Write(" " + id + name + country + agentValue + mainRoleValue + teamValue + rankValue + dropDivValue + dropSecRoleValue);
+                valoViewAPI.editPlayer(id, name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue);
+                lblOutput.Text = "Player edited!";
+                DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
+                gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
+                gvPlayers.DataBind();
+            }
+            else
+            {
+                lblOutput.Text = "Please ensure you've selected a player, and all fields are valid.";
+            }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if(!String.IsNullOrEmpty(txtPlayerID.Text))
+            {
+                ValoViewAPI valoViewAPI = new ValoViewAPI();
+                valoViewAPI.deletePlayer(Convert.ToInt32(txtPlayerID.Text));
+                btnClear_Click(sender, e);
+                lblOutput.Text = "Player deleted!";
+                DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
+                gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
+                gvPlayers.DataBind();
+            }
+            else
+            {
+                lblOutput.Text = "Please select a player first.";
+            }
         }
     }
 }
