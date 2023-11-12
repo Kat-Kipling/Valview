@@ -30,5 +30,10 @@ namespace ValView.Admin
                 }
             }
         }
+
+        protected void btnPlayerManagement_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EditPlayer.aspx", true);
+        }
     }
 }

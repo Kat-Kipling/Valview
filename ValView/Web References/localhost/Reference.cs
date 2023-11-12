@@ -44,6 +44,18 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback getPlayerDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getAllPlayerInfoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getRanksOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getTeamsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getDivisionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAgentsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getRolesOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -102,6 +114,24 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event getPlayerDetailsCompletedEventHandler getPlayerDetailsCompleted;
+        
+        /// <remarks/>
+        public event getAllPlayerInfoCompletedEventHandler getAllPlayerInfoCompleted;
+        
+        /// <remarks/>
+        public event getRanksCompletedEventHandler getRanksCompleted;
+        
+        /// <remarks/>
+        public event getTeamsCompletedEventHandler getTeamsCompleted;
+        
+        /// <remarks/>
+        public event getDivisionsCompletedEventHandler getDivisionsCompleted;
+        
+        /// <remarks/>
+        public event getAgentsCompletedEventHandler getAgentsCompleted;
+        
+        /// <remarks/>
+        public event getRolesCompletedEventHandler getRolesCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -305,6 +335,168 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAllPlayerInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getAllPlayerInfo() {
+            object[] results = this.Invoke("getAllPlayerInfo", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAllPlayerInfoAsync() {
+            this.getAllPlayerInfoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAllPlayerInfoAsync(object userState) {
+            if ((this.getAllPlayerInfoOperationCompleted == null)) {
+                this.getAllPlayerInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAllPlayerInfoOperationCompleted);
+            }
+            this.InvokeAsync("getAllPlayerInfo", new object[0], this.getAllPlayerInfoOperationCompleted, userState);
+        }
+        
+        private void OngetAllPlayerInfoOperationCompleted(object arg) {
+            if ((this.getAllPlayerInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAllPlayerInfoCompleted(this, new getAllPlayerInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRanks", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getRanks() {
+            object[] results = this.Invoke("getRanks", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getRanksAsync() {
+            this.getRanksAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getRanksAsync(object userState) {
+            if ((this.getRanksOperationCompleted == null)) {
+                this.getRanksOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRanksOperationCompleted);
+            }
+            this.InvokeAsync("getRanks", new object[0], this.getRanksOperationCompleted, userState);
+        }
+        
+        private void OngetRanksOperationCompleted(object arg) {
+            if ((this.getRanksCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getRanksCompleted(this, new getRanksCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTeams", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getTeams() {
+            object[] results = this.Invoke("getTeams", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTeamsAsync() {
+            this.getTeamsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getTeamsAsync(object userState) {
+            if ((this.getTeamsOperationCompleted == null)) {
+                this.getTeamsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTeamsOperationCompleted);
+            }
+            this.InvokeAsync("getTeams", new object[0], this.getTeamsOperationCompleted, userState);
+        }
+        
+        private void OngetTeamsOperationCompleted(object arg) {
+            if ((this.getTeamsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTeamsCompleted(this, new getTeamsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDivisions", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getDivisions() {
+            object[] results = this.Invoke("getDivisions", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDivisionsAsync() {
+            this.getDivisionsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getDivisionsAsync(object userState) {
+            if ((this.getDivisionsOperationCompleted == null)) {
+                this.getDivisionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDivisionsOperationCompleted);
+            }
+            this.InvokeAsync("getDivisions", new object[0], this.getDivisionsOperationCompleted, userState);
+        }
+        
+        private void OngetDivisionsOperationCompleted(object arg) {
+            if ((this.getDivisionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDivisionsCompleted(this, new getDivisionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAgents", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getAgents() {
+            object[] results = this.Invoke("getAgents", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAgentsAsync() {
+            this.getAgentsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAgentsAsync(object userState) {
+            if ((this.getAgentsOperationCompleted == null)) {
+                this.getAgentsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAgentsOperationCompleted);
+            }
+            this.InvokeAsync("getAgents", new object[0], this.getAgentsOperationCompleted, userState);
+        }
+        
+        private void OngetAgentsOperationCompleted(object arg) {
+            if ((this.getAgentsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAgentsCompleted(this, new getAgentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRoles", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getRoles() {
+            object[] results = this.Invoke("getRoles", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getRolesAsync() {
+            this.getRolesAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getRolesAsync(object userState) {
+            if ((this.getRolesOperationCompleted == null)) {
+                this.getRolesOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRolesOperationCompleted);
+            }
+            this.InvokeAsync("getRoles", new object[0], this.getRolesOperationCompleted, userState);
+        }
+        
+        private void OngetRolesOperationCompleted(object arg) {
+            if ((this.getRolesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getRolesCompleted(this, new getRolesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -501,6 +693,162 @@ namespace ValView.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getAllPlayerInfoCompletedEventHandler(object sender, getAllPlayerInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAllPlayerInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAllPlayerInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getRanksCompletedEventHandler(object sender, getRanksCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRanksCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRanksCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getTeamsCompletedEventHandler(object sender, getTeamsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTeamsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTeamsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getDivisionsCompletedEventHandler(object sender, getDivisionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDivisionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDivisionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getAgentsCompletedEventHandler(object sender, getAgentsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAgentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAgentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getRolesCompletedEventHandler(object sender, getRolesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRolesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRolesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md">
-                <div class="profile-card">
+            <div class="col-md ">
+                <div class="profile-card mx-auto my-4">
                     <div class="card">
                         <asp:Image ID="imgUserProfilePic" CssClass="card-img-top rounded-circle profile-picture" AlternateText="User Profile Picture" ImageUrl="~/images/profile-pics/Default_Profile.png" runat="server"/>
                         <h1 class="card-title"><asp:Label runat="server" ID="lblUsername" Text="User" /></h1>
@@ -21,8 +21,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md">
-                a
+            <div class="col-md mx-auto my-4">
+
+                <div class="col">
+                    <asp:Button ID="btnPlayerManagement" runat="server" Text="Player Management" CssClass="btn btn-primary btn-block btn-lg" OnClick="btnPlayerManagement_Click"/>
+                </div>
+
+                <div class="col">
+                </div>
+
+                <div class="col">
+
+                </div>
             </div>
         </div>
     </div>

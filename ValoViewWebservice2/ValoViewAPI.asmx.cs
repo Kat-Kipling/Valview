@@ -70,5 +70,41 @@ namespace ValoViewWebservice
             Player player = new Player(id);
             return player.getDetails();
         }
+
+        [WebMethod]
+        public DataSet getAllPlayerInfo()
+        {
+            return DataAccess.getAllPlayerInfo();
+        }
+
+        [WebMethod]
+        public DataSet getRanks()
+        {
+            return DataAccess.getRanks();
+        }
+        [WebMethod]
+        public DataSet getTeams()
+        {
+            return DataAccess.getTeams();
+        }
+
+        [WebMethod]
+        public DataSet getDivisions()
+        {
+            return DataAccess.getDivisions();
+        }
+
+        [WebMethod]
+        public DataSet getAgents()
+        {
+            return DataAccess.getAgents();
+        }
+
+        [WebMethod]
+        public DataSet getRoles()
+        {
+            return DataAccess.getRoles();
+        }
+
     }
 }

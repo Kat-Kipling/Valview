@@ -25,6 +25,76 @@ namespace ValoViewWebservice.App_Code.DAL
             }
         }
 
+        public static DataSet getTeams()
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlCmd = "SELECT * FROM tblTeams;";
+
+            OleDbDataAdapter daTeamNames = new OleDbDataAdapter(sqlCmd, conn);
+            daTeamNames.Fill(ds, "dtTeams");
+            conn.Close();
+
+            return ds;
+        }
+
+        public static DataSet getRanks()
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlCmd = "SELECT * FROM tblRanks;";
+
+            OleDbDataAdapter daRanks = new OleDbDataAdapter(sqlCmd, conn);
+            daRanks.Fill(ds, "dtRanks");
+            conn.Close();
+
+            return ds;
+        }
+
+        public static DataSet getRoles()
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlCmd = "SELECT * FROM tblAgentRoles;";
+
+            OleDbDataAdapter daRoles = new OleDbDataAdapter(sqlCmd, conn);
+            daRoles.Fill(ds, "dtRoles");
+            conn.Close();
+
+            return ds;
+        }
+
+        public static DataSet getAgents()
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlCmd = "SELECT * FROM tblAgents;";
+
+            OleDbDataAdapter daAgents = new OleDbDataAdapter(sqlCmd, conn);
+            daAgents.Fill(ds, "dtAgents");
+            conn.Close();
+
+            return ds;
+        }
+
+        public static DataSet getDivisions()
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlCmd = "SELECT * FROM tblDivisions;";
+
+            OleDbDataAdapter daDivisions = new OleDbDataAdapter(sqlCmd, conn);
+            daDivisions.Fill(ds, "dtDivisions");
+            conn.Close();
+
+            return ds;
+        }
+
         public static DataSet getTournamentMatches(string tournamentName)
         {
             DataSet ds = new DataSet();
@@ -134,7 +204,7 @@ namespace ValoViewWebservice.App_Code.DAL
             DataSet ds = new DataSet();
 
             OleDbConnection conn = openConnection();
-            string sqlStr = "SELECT p.ID, p.Username, t.[Team Name] AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, IIf(IsNull(mr.[Role Name]), '', mr.[Role Name]) AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent, p.[Picture URL] " +
+            string sqlStr = "SELECT p.ID, p.Username, t.[Team Name] AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, mr.[Role Name] AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent, p.[Picture URL] " +
                 "FROM(((((tblPlayers AS p " +
                 "INNER JOIN tblTeams AS t ON p.Team = t.[Team ID]) " +
                 "INNER JOIN tblRanks AS r ON p.Rank = r.ID) " +
@@ -163,6 +233,28 @@ namespace ValoViewWebservice.App_Code.DAL
             reader.Close();
             conn.Close();
             return playerInfo;
+        }
+
+        public static DataSet getAllPlayerInfo()
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlStr = "SELECT p.ID, p.Username, t.[Team Name] AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, IIf(IsNull(mr.[Role Name]), '', mr.[Role Name]) AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent, p.[Picture URL] " +
+                "FROM(((((tblPlayers AS p " +
+                "INNER JOIN tblTeams AS t ON p.Team = t.[Team ID]) " +
+                "INNER JOIN tblRanks AS r ON p.Rank = r.ID) " +
+                "LEFT JOIN tblDivisions AS d ON p.Division = d.ID) " +
+                "LEFT JOIN tblAgentRoles AS mr ON p.[Main Role] = mr.ID) " +
+                "LEFT JOIN tblAgentRoles AS sr ON p.[Secondary Role] = sr.ID) " +
+                "INNER JOIN tblAgents AS a ON p.[Main Agent] = a.ID;";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataAdapter daPlayers = new OleDbDataAdapter(sqlStr, conn);
+            daPlayers.Fill(ds, "dtPlayers");
+            conn.Close();
+
+            return ds;
         }
 
         public static List<string> getTournamentInfo(string tournamentName)
