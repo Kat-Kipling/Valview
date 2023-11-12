@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Code\BAL\Profile.cs" />
     <Compile Include="Code\BAL\Series.cs" />
+    <Compile Include="Code\BAL\Team.cs" />
     <Compile Include="Code\BAL\Tournament.cs" />
     <Compile Include="Code\DAL\DataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

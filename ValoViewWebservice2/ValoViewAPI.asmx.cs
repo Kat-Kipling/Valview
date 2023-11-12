@@ -4,6 +4,7 @@ using System.Web.Services;
 using ValoViewWebservice.App_Code.BAL;
 using ValoViewWebservice.App_Code.DAL;
 using ValoViewWebservice.Code.BAL;
+using ValoViewWebservice2.Code.BAL;
 
 namespace ValoViewWebservice
 
@@ -122,6 +123,13 @@ namespace ValoViewWebservice
         public void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
         {
             DataAccess.addNewPlayer(name, team, country, rank, division, mainRole, secRole, mainAgent);
+        }
+
+        [WebMethod]
+        public List<string> getTeamInfo(int id)
+        {
+            Team team = new Team(id);
+            return team.getDetails();
         }
     }
 }

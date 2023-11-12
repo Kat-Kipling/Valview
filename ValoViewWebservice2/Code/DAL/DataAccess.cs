@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.OleDb;
 using System.Data;
 using System.Drawing;
+using System.Runtime.Remoting.Messaging;
+using System.Diagnostics;
 
 namespace ValoViewWebservice.App_Code.DAL
 {
@@ -203,8 +205,6 @@ namespace ValoViewWebservice.App_Code.DAL
 
         public static List<String> getPlayerInfo(int id)
         {
-            DataSet ds = new DataSet();
-
             OleDbConnection conn = openConnection();
             string sqlStr = "SELECT p.ID, p.Username, t.[Team Name] AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, mr.[Role Name] AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent, p.[Picture URL] " +
                 "FROM(((((tblPlayers AS p " +
@@ -236,8 +236,49 @@ namespace ValoViewWebservice.App_Code.DAL
             conn.Close();
             return playerInfo;
         }
+        public static List<String> getTeamInfo(int id)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "SELECT tblTeams.[Team ID], tblTeams.[Team Name], tblTeams.Country, tblRegions.[Region Name] " +
+                "FROM tblTeams " +
+                "INNER JOIN tblRegions ON tblTeams.[Region ID] = tblRegions.[Region ID]" +
+                "WHERE tblTeams.[Team ID] = " + id + ";";
 
-        public static DataSet getAllPlayerInfo()
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            List<string> teamInfo = new List<string>(4);
+            while (reader.Read())
+            {
+                teamInfo.Add(reader.GetValue(0).ToString());
+                teamInfo.Add(reader.GetString(1));
+                teamInfo.Add(reader.GetString(2));
+                teamInfo.Add(reader.GetString(3));
+            }
+            reader.Close();
+            conn.Close();
+            return teamInfo;
+        }
+
+        public static List<String> getTeamMembers(int id)
+        {
+            OleDbConnection conn = openConnection();
+
+            string sqlStr = "SELECT tblPlayers.[Username] " +
+                "FROM tblPlayers " +
+                "WHERE tblPlayers.[Team] = " + id + ";";
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            List<string> teamMembers = new List<string>(5);
+            while (reader.Read())
+            {
+                teamMembers.Add(reader.GetString(0));
+            }
+
+            return teamMembers;
+        }
+            public static DataSet getAllPlayerInfo()
         {
             DataSet ds = new DataSet();
 

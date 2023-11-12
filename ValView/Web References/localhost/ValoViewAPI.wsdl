@@ -266,6 +266,20 @@
       <s:element name="addNewPlayerResponse">
         <s:complexType />
       </s:element>
+      <s:element name="getTeamInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTeamInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTeamInfoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getTournamentSeriesByNameSoapIn">
@@ -364,6 +378,12 @@
   <wsdl:message name="addNewPlayerSoapOut">
     <wsdl:part name="parameters" element="tns:addNewPlayerResponse" />
   </wsdl:message>
+  <wsdl:message name="getTeamInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getTeamInfo" />
+  </wsdl:message>
+  <wsdl:message name="getTeamInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getTeamInfoResponse" />
+  </wsdl:message>
   <wsdl:portType name="ValoViewAPISoap">
     <wsdl:operation name="getTournamentSeriesByName">
       <wsdl:input message="tns:getTournamentSeriesByNameSoapIn" />
@@ -428,6 +448,10 @@
     <wsdl:operation name="addNewPlayer">
       <wsdl:input message="tns:addNewPlayerSoapIn" />
       <wsdl:output message="tns:addNewPlayerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTeamInfo">
+      <wsdl:input message="tns:getTeamInfoSoapIn" />
+      <wsdl:output message="tns:getTeamInfoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ValoViewAPISoap" type="tns:ValoViewAPISoap">
@@ -576,6 +600,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTeamInfo">
+      <soap:operation soapAction="http://tempuri.org/getTeamInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ValoViewAPISoap12" type="tns:ValoViewAPISoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -716,6 +749,15 @@
     </wsdl:operation>
     <wsdl:operation name="addNewPlayer">
       <soap12:operation soapAction="http://tempuri.org/addNewPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeamInfo">
+      <soap12:operation soapAction="http://tempuri.org/getTeamInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

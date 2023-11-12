@@ -62,6 +62,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback addNewPlayerOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTeamInfoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -147,6 +149,9 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event addNewPlayerCompletedEventHandler addNewPlayerCompleted;
+        
+        /// <remarks/>
+        public event getTeamInfoCompletedEventHandler getTeamInfoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -626,6 +631,35 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTeamInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getTeamInfo(int id) {
+            object[] results = this.Invoke("getTeamInfo", new object[] {
+                        id});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTeamInfoAsync(int id) {
+            this.getTeamInfoAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void getTeamInfoAsync(int id, object userState) {
+            if ((this.getTeamInfoOperationCompleted == null)) {
+                this.getTeamInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTeamInfoOperationCompleted);
+            }
+            this.InvokeAsync("getTeamInfo", new object[] {
+                        id}, this.getTeamInfoOperationCompleted, userState);
+        }
+        
+        private void OngetTeamInfoOperationCompleted(object arg) {
+            if ((this.getTeamInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTeamInfoCompleted(this, new getTeamInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -993,6 +1027,32 @@ namespace ValView.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void addNewPlayerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getTeamInfoCompletedEventHandler(object sender, getTeamInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTeamInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTeamInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591
