@@ -97,13 +97,13 @@
                 </div>
             </div>
 
-            <div class="col-lg-7  mx-auto my-4 table-responsive">
+            <div class="col-lg-7 mx-auto my-4 table-responsive">
                 <asp:GridView ID="gvTeams" CssClass="table table-bordered table-hover table-sm table-dark" AutoGenerateColumns="false" runat="server" OnSelectedIndexChanged="gvTeams_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="Team ID" HeaderText="ID"/>
-                        <asp:BoundField DataField="Team" HeaderText="Team Name"/>
+                        <asp:BoundField DataField="Team Name" HeaderText="Team Name"/>
                         <asp:BoundField DataField="Country" HeaderText="Country"/>
-                        <asp:BoundField DataField="Region ID" HeaderText="Region"/>
+                        <asp:BoundField DataField="Region Name" HeaderText="Region"/>
                         <asp:ButtonField CommandName="Select" Text="Select" />
                     </Columns>
                 </asp:GridView>

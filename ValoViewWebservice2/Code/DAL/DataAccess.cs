@@ -30,7 +30,9 @@ namespace ValoViewWebservice.App_Code.DAL
             DataSet ds = new DataSet();
 
             OleDbConnection conn = openConnection();
-            string sqlCmd = "SELECT * FROM tblTeams;";
+            string sqlCmd = "SELECT tblTeams.[Team ID], tblTeams.[Team Name], tblTeams.Country, tblRegions.[Region Name] " +
+                "FROM tblTeams " +
+                "INNER JOIN tblRegions ON tblTeams.[Region ID] = tblRegions.[Region ID];";
 
             OleDbDataAdapter daTeamNames = new OleDbDataAdapter(sqlCmd, conn);
             daTeamNames.Fill(ds, "dtTeams");
