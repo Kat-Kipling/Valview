@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -101,7 +102,32 @@ namespace ValView.Admin
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(txtPlayerName.Text) && 
+                !String.IsNullOrEmpty(txtPlayerCountry.Text) &&
+                drpAgent.SelectedValue != "" &&
+                drpMainRole.SelectedValue != "" &&
+                drpTeam.SelectedValue != "" &&
+                drpRank.SelectedValue != "" &&
+                drpDiv.SelectedValue != "" &&
+                drpSecRole.SelectedValue != "")
+            {
+                ValoViewAPI valoViewAPI = new ValoViewAPI();
+                string name = txtPlayerName.Text;
+                string country = txtPlayerCountry.Text;
+                int agentValue = Convert.ToInt32(drpAgent.SelectedItem.Value);
+                int mainRoleValue = Convert.ToInt32((drpMainRole.SelectedItem.Value));
+                int teamValue = Convert.ToInt32(drpTeam.SelectedItem.Value);
+                int rankValue = Convert.ToInt32(drpRank.SelectedItem.Value);
+                int dropDivValue = Convert.ToInt32(drpDiv.SelectedItem.Value);
+                int dropSecRoleValue = Convert.ToInt32((drpSecRole.SelectedItem.Value));
 
+                valoViewAPI.addNewPlayer(name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue);
+                lblOutput.Text = "Player added!";
+            }
+            else
+            {
+                lblOutput.Text = "Please ensure all fields are valid.";
+            }
         }
 
         protected void btnClear_Click(object sender, EventArgs e)

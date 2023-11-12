@@ -221,6 +221,51 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="deletePlayer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePlayerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="editPlayer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="team" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rank" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="division" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mainRole" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="secRole" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mainAgent" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="editPlayerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="addNewPlayer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="team" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rank" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="division" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mainRole" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="secRole" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mainAgent" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addNewPlayerResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getTournamentSeriesByNameSoapIn">
@@ -301,6 +346,24 @@
   <wsdl:message name="getRolesSoapOut">
     <wsdl:part name="parameters" element="tns:getRolesResponse" />
   </wsdl:message>
+  <wsdl:message name="deletePlayerSoapIn">
+    <wsdl:part name="parameters" element="tns:deletePlayer" />
+  </wsdl:message>
+  <wsdl:message name="deletePlayerSoapOut">
+    <wsdl:part name="parameters" element="tns:deletePlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="editPlayerSoapIn">
+    <wsdl:part name="parameters" element="tns:editPlayer" />
+  </wsdl:message>
+  <wsdl:message name="editPlayerSoapOut">
+    <wsdl:part name="parameters" element="tns:editPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="addNewPlayerSoapIn">
+    <wsdl:part name="parameters" element="tns:addNewPlayer" />
+  </wsdl:message>
+  <wsdl:message name="addNewPlayerSoapOut">
+    <wsdl:part name="parameters" element="tns:addNewPlayerResponse" />
+  </wsdl:message>
   <wsdl:portType name="ValoViewAPISoap">
     <wsdl:operation name="getTournamentSeriesByName">
       <wsdl:input message="tns:getTournamentSeriesByNameSoapIn" />
@@ -353,6 +416,18 @@
     <wsdl:operation name="getRoles">
       <wsdl:input message="tns:getRolesSoapIn" />
       <wsdl:output message="tns:getRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePlayer">
+      <wsdl:input message="tns:deletePlayerSoapIn" />
+      <wsdl:output message="tns:deletePlayerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="editPlayer">
+      <wsdl:input message="tns:editPlayerSoapIn" />
+      <wsdl:output message="tns:editPlayerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addNewPlayer">
+      <wsdl:input message="tns:addNewPlayerSoapIn" />
+      <wsdl:output message="tns:addNewPlayerSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ValoViewAPISoap" type="tns:ValoViewAPISoap">
@@ -474,6 +549,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="deletePlayer">
+      <soap:operation soapAction="http://tempuri.org/deletePlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editPlayer">
+      <soap:operation soapAction="http://tempuri.org/editPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewPlayer">
+      <soap:operation soapAction="http://tempuri.org/addNewPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ValoViewAPISoap12" type="tns:ValoViewAPISoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -587,6 +689,33 @@
     </wsdl:operation>
     <wsdl:operation name="getRoles">
       <soap12:operation soapAction="http://tempuri.org/getRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePlayer">
+      <soap12:operation soapAction="http://tempuri.org/deletePlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editPlayer">
+      <soap12:operation soapAction="http://tempuri.org/editPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addNewPlayer">
+      <soap12:operation soapAction="http://tempuri.org/addNewPlayer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

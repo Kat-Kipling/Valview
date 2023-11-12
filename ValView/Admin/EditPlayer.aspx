@@ -67,7 +67,7 @@
                                         <div class="form-group">
                                             <asp:DropDownList class="form-control" ID="drpDiv" runat="server" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="Select Division" Value=""></asp:ListItem>
-                                                <asp:ListItem Text="N/A" Value="N/A"></asp:ListItem>
+                                                <asp:ListItem Text="N/A" Value="-1"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                         <div class="form-group">
                                             <asp:DropDownList class="form-control" ID="drpSecRole" runat="server" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="Select Role" Value=""></asp:ListItem>
-                                                <asp:ListItem Text="N/A" Value="N/A"></asp:ListItem>
+                                                <asp:ListItem Text="N/A" Value="-1"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -102,6 +102,12 @@
                                                 <asp:ListItem Text="Select Agent" Value=""></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <asp:Label ID="lblOutput" runat="server"></asp:Label>
                                     </div>
                                 </div>
 

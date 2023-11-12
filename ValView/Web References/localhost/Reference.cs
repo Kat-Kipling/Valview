@@ -56,6 +56,12 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback getRolesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback deletePlayerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback editPlayerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addNewPlayerOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -132,6 +138,15 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event getRolesCompletedEventHandler getRolesCompleted;
+        
+        /// <remarks/>
+        public event deletePlayerCompletedEventHandler deletePlayerCompleted;
+        
+        /// <remarks/>
+        public event editPlayerCompletedEventHandler editPlayerCompleted;
+        
+        /// <remarks/>
+        public event addNewPlayerCompletedEventHandler addNewPlayerCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -497,6 +512,120 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deletePlayer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void deletePlayer(int id) {
+            this.Invoke("deletePlayer", new object[] {
+                        id});
+        }
+        
+        /// <remarks/>
+        public void deletePlayerAsync(int id) {
+            this.deletePlayerAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void deletePlayerAsync(int id, object userState) {
+            if ((this.deletePlayerOperationCompleted == null)) {
+                this.deletePlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeletePlayerOperationCompleted);
+            }
+            this.InvokeAsync("deletePlayer", new object[] {
+                        id}, this.deletePlayerOperationCompleted, userState);
+        }
+        
+        private void OndeletePlayerOperationCompleted(object arg) {
+            if ((this.deletePlayerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deletePlayerCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/editPlayer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
+            this.Invoke("editPlayer", new object[] {
+                        id,
+                        name,
+                        team,
+                        country,
+                        rank,
+                        division,
+                        mainRole,
+                        secRole,
+                        mainAgent});
+        }
+        
+        /// <remarks/>
+        public void editPlayerAsync(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
+            this.editPlayerAsync(id, name, team, country, rank, division, mainRole, secRole, mainAgent, null);
+        }
+        
+        /// <remarks/>
+        public void editPlayerAsync(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, object userState) {
+            if ((this.editPlayerOperationCompleted == null)) {
+                this.editPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OneditPlayerOperationCompleted);
+            }
+            this.InvokeAsync("editPlayer", new object[] {
+                        id,
+                        name,
+                        team,
+                        country,
+                        rank,
+                        division,
+                        mainRole,
+                        secRole,
+                        mainAgent}, this.editPlayerOperationCompleted, userState);
+        }
+        
+        private void OneditPlayerOperationCompleted(object arg) {
+            if ((this.editPlayerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.editPlayerCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addNewPlayer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
+            this.Invoke("addNewPlayer", new object[] {
+                        name,
+                        team,
+                        country,
+                        rank,
+                        division,
+                        mainRole,
+                        secRole,
+                        mainAgent});
+        }
+        
+        /// <remarks/>
+        public void addNewPlayerAsync(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
+            this.addNewPlayerAsync(name, team, country, rank, division, mainRole, secRole, mainAgent, null);
+        }
+        
+        /// <remarks/>
+        public void addNewPlayerAsync(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, object userState) {
+            if ((this.addNewPlayerOperationCompleted == null)) {
+                this.addNewPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddNewPlayerOperationCompleted);
+            }
+            this.InvokeAsync("addNewPlayer", new object[] {
+                        name,
+                        team,
+                        country,
+                        rank,
+                        division,
+                        mainRole,
+                        secRole,
+                        mainAgent}, this.addNewPlayerOperationCompleted, userState);
+        }
+        
+        private void OnaddNewPlayerOperationCompleted(object arg) {
+            if ((this.addNewPlayerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addNewPlayerCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -852,6 +981,18 @@ namespace ValView.localhost {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void deletePlayerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void editPlayerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void addNewPlayerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

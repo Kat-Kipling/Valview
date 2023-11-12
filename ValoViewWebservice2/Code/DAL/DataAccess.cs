@@ -321,15 +321,55 @@ namespace ValoViewWebservice.App_Code.DAL
         public static void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
         {
             OleDbConnection conn = openConnection();
-            string sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
-                "VALUES (' " + name + "', " +
-                team + ", " +
-                "'" + country + "', " +
-                rank + ", " +
-                division + ", " +
-                mainRole + ", " +
-                secRole + ", " +
-                mainAgent + ");";
+            string sqlStr = "";
+            if (division == -1 && secRole != -1) // Has a secondary role, doesn't have a division
+            {
+                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                                    "VALUES (' " + name + "', " +
+                                    team + ", " +
+                                    "'" + country + "', " +
+                                    rank + ", " +
+                                    "NULL, " +
+                                    mainRole + ", " +
+                                    secRole + ", " +
+                                    mainAgent + ");";
+            }
+            else if(division != -1 && secRole == -1) // Has a division, doesn't have a secondary role
+            {
+                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                                    "VALUES (' " + name + "', " +
+                                    team + ", " +
+                                    "'" + country + "', " +
+                                    rank + ", " +
+                                    division + ", " +
+                                    mainRole + ", " +
+                                    "NULL, " +
+                                    mainAgent + ");";
+            }
+            else if(division == -1 && secRole == -1) // Has neither a division, or a secondary role
+            {
+                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                                    "VALUES (' " + name + "', " +
+                                    team + ", " +
+                                    "'" + country + "', " +
+                                    rank + ", " +
+                                    "NULL, " +
+                                    mainRole + ", " +
+                                    "NULL, " +
+                                    mainAgent + ");";
+            }
+            else // Has both a division, and a secondary role
+            {
+                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                                    "VALUES (' " + name + "', " +
+                                    team + ", " +
+                                    "'" + country + "', " +
+                                    rank + ", " +
+                                    division + ", " +
+                                    mainRole + ", " +
+                                    secRole + ", " +
+                                    mainAgent + ");";
+            }
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
             OleDbDataReader reader = cmd.ExecuteReader();
