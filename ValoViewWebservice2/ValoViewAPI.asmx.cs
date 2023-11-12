@@ -139,6 +139,12 @@ namespace ValoViewWebservice
         }
 
         [WebMethod]
+        public DataSet getTeamData(int id)
+        {
+            return DataAccess.getTeamAsDataset(id);
+        }
+
+        [WebMethod]
         public DataSet getRegions()
         {
             return DataAccess.getRegions();
@@ -166,6 +172,12 @@ namespace ValoViewWebservice
         public int getTeamIdByName(string name)
         {
             return DataAccess.GetTeamIdByName(name);
+        }
+
+        [WebMethod]
+        public void deleteTeam(int id)
+        {
+            DataAccess.deleteTeam(id);
         }
     }
 }

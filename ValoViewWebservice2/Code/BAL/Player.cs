@@ -23,7 +23,7 @@ namespace ValoViewWebservice.App_Code.BAL
         public Player(int id)
         {
             List<String> details = DataAccess.getPlayerInfo(id);
-            id = Convert.ToInt32(details[0]);
+            this.id = Convert.ToInt32(details[0]);
             userName = details[1];
             team = details[2];
             country = details[3];

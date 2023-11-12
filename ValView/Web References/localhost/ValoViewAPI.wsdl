@@ -294,6 +294,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getTeamData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTeamDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTeamDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getRegions">
         <s:complexType />
       </s:element>
@@ -357,6 +378,16 @@
             <s:element minOccurs="1" maxOccurs="1" name="getTeamIdByNameResult" type="s:int" />
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="deleteTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteTeamResponse">
+        <s:complexType />
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -468,6 +499,12 @@
   <wsdl:message name="getTeamInfoSoapOut">
     <wsdl:part name="parameters" element="tns:getTeamInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="getTeamDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getTeamData" />
+  </wsdl:message>
+  <wsdl:message name="getTeamDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getTeamDataResponse" />
+  </wsdl:message>
   <wsdl:message name="getRegionsSoapIn">
     <wsdl:part name="parameters" element="tns:getRegions" />
   </wsdl:message>
@@ -497,6 +534,12 @@
   </wsdl:message>
   <wsdl:message name="getTeamIdByNameSoapOut">
     <wsdl:part name="parameters" element="tns:getTeamIdByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteTeam" />
+  </wsdl:message>
+  <wsdl:message name="deleteTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteTeamResponse" />
   </wsdl:message>
   <wsdl:portType name="ValoViewAPISoap">
     <wsdl:operation name="getTournamentSeriesByName">
@@ -571,6 +614,10 @@
       <wsdl:input message="tns:getTeamInfoSoapIn" />
       <wsdl:output message="tns:getTeamInfoSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getTeamData">
+      <wsdl:input message="tns:getTeamDataSoapIn" />
+      <wsdl:output message="tns:getTeamDataSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getRegions">
       <wsdl:input message="tns:getRegionsSoapIn" />
       <wsdl:output message="tns:getRegionsSoapOut" />
@@ -590,6 +637,10 @@
     <wsdl:operation name="getTeamIdByName">
       <wsdl:input message="tns:getTeamIdByNameSoapIn" />
       <wsdl:output message="tns:getTeamIdByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTeam">
+      <wsdl:input message="tns:deleteTeamSoapIn" />
+      <wsdl:output message="tns:deleteTeamSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ValoViewAPISoap" type="tns:ValoViewAPISoap">
@@ -756,6 +807,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTeamData">
+      <soap:operation soapAction="http://tempuri.org/getTeamData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getRegions">
       <soap:operation soapAction="http://tempuri.org/getRegions" style="document" />
       <wsdl:input>
@@ -794,6 +854,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTeamIdByName">
       <soap:operation soapAction="http://tempuri.org/getTeamIdByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTeam">
+      <soap:operation soapAction="http://tempuri.org/deleteTeam" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -966,6 +1035,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTeamData">
+      <soap12:operation soapAction="http://tempuri.org/getTeamData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getRegions">
       <soap12:operation soapAction="http://tempuri.org/getRegions" style="document" />
       <wsdl:input>
@@ -1004,6 +1082,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTeamIdByName">
       <soap12:operation soapAction="http://tempuri.org/getTeamIdByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTeam">
+      <soap12:operation soapAction="http://tempuri.org/deleteTeam" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

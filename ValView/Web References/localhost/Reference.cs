@@ -66,6 +66,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback getTeamInfoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTeamDataOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getRegionsOperationCompleted;
         
         private System.Threading.SendOrPostCallback removePlayerFromTeamOperationCompleted;
@@ -75,6 +77,8 @@ namespace ValView.localhost {
         private System.Threading.SendOrPostCallback addTeamOperationCompleted;
         
         private System.Threading.SendOrPostCallback getTeamIdByNameOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteTeamOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -169,6 +173,9 @@ namespace ValView.localhost {
         public event getTeamInfoCompletedEventHandler getTeamInfoCompleted;
         
         /// <remarks/>
+        public event getTeamDataCompletedEventHandler getTeamDataCompleted;
+        
+        /// <remarks/>
         public event getRegionsCompletedEventHandler getRegionsCompleted;
         
         /// <remarks/>
@@ -182,6 +189,9 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event getTeamIdByNameCompletedEventHandler getTeamIdByNameCompleted;
+        
+        /// <remarks/>
+        public event deleteTeamCompletedEventHandler deleteTeamCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -719,6 +729,35 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTeamData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getTeamData(int id) {
+            object[] results = this.Invoke("getTeamData", new object[] {
+                        id});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTeamDataAsync(int id) {
+            this.getTeamDataAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void getTeamDataAsync(int id, object userState) {
+            if ((this.getTeamDataOperationCompleted == null)) {
+                this.getTeamDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTeamDataOperationCompleted);
+            }
+            this.InvokeAsync("getTeamData", new object[] {
+                        id}, this.getTeamDataOperationCompleted, userState);
+        }
+        
+        private void OngetTeamDataOperationCompleted(object arg) {
+            if ((this.getTeamDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTeamDataCompleted(this, new getTeamDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegions", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public System.Data.DataSet getRegions() {
             object[] results = this.Invoke("getRegions", new object[0]);
@@ -861,6 +900,34 @@ namespace ValView.localhost {
             if ((this.getTeamIdByNameCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getTeamIdByNameCompleted(this, new getTeamIdByNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteTeam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void deleteTeam(int id) {
+            this.Invoke("deleteTeam", new object[] {
+                        id});
+        }
+        
+        /// <remarks/>
+        public void deleteTeamAsync(int id) {
+            this.deleteTeamAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void deleteTeamAsync(int id, object userState) {
+            if ((this.deleteTeamOperationCompleted == null)) {
+                this.deleteTeamOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteTeamOperationCompleted);
+            }
+            this.InvokeAsync("deleteTeam", new object[] {
+                        id}, this.deleteTeamOperationCompleted, userState);
+        }
+        
+        private void OndeleteTeamOperationCompleted(object arg) {
+            if ((this.deleteTeamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteTeamCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1287,6 +1354,32 @@ namespace ValView.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getTeamDataCompletedEventHandler(object sender, getTeamDataCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTeamDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTeamDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void getRegionsCompletedEventHandler(object sender, getRegionsCompletedEventArgs e);
     
     /// <remarks/>
@@ -1348,6 +1441,10 @@ namespace ValView.localhost {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void deleteTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

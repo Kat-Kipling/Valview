@@ -46,6 +46,28 @@ namespace ValoViewWebservice.App_Code.DAL
             return ds;
         }
 
+        public static DataSet getTeamAsDataset(int id)
+        {
+            DataSet ds = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlStr = "SELECT p.ID, p.Username, t.[Team Name] AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, mr.[Role Name] AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent " +
+                "FROM(((((tblPlayers AS p " +
+                "INNER JOIN tblTeams AS t ON p.Team = t.[Team ID]) " +
+                "INNER JOIN tblRanks AS r ON p.Rank = r.ID) " +
+                "LEFT JOIN tblDivisions AS d ON p.Division = d.ID) " +
+                "LEFT JOIN tblAgentRoles AS mr ON p.[Main Role] = mr.ID) " +
+                "LEFT JOIN tblAgentRoles AS sr ON p.[Secondary Role] = sr.ID) " +
+                "INNER JOIN tblAgents AS a ON p.[Main Agent] = a.ID " +
+                "WHERE t.[Team ID] = " + id + ";";
+
+            OleDbDataAdapter daTeamNames = new OleDbDataAdapter(sqlStr, conn);
+            daTeamNames.Fill(ds, "dtTeams");
+            conn.Close();
+
+            return ds;
+        }
+
         public static DataSet getRanks()
         {
             DataSet ds = new DataSet();
@@ -351,11 +373,27 @@ namespace ValoViewWebservice.App_Code.DAL
             conn.Close();
         }
 
+        public static void deleteTeam(int id)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "DELETE * " +
+                "FROM tblTeam " +
+                "WHERE tblTeam.[Team ID] = " + id + ";";
+
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
+
+
         public static void removePlayerFromTeam(int id)
         {
             OleDbConnection conn = openConnection();
             string sqlStr = "UPDATE tblPlayers " +
-                "SET Team = NULL " +
+                "SET Team = 19 " +
                 "WHERE tblPlayers.[ID] = " + id + ";";
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
