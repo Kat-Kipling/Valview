@@ -13,5 +13,10 @@ namespace ValView.Admin
         {
 
         }
+
+        protected void gvTeams_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
