@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Admin\Account.aspx" />
     <Content Include="Admin\EditPlayer.aspx" />
+    <Content Include="Admin\EditTeams.aspx" />
     <Content Include="css\styles.css" />
     <Content Include="images\logo.png" />
     <Content Include="images\profile-pics\Default_Profile.png" />
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="Admin\EditPlayer.aspx.designer.cs">
       <DependentUpon>EditPlayer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EditTeams.aspx.cs">
+      <DependentUpon>EditTeams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EditTeams.aspx.designer.cs">
+      <DependentUpon>EditTeams.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
