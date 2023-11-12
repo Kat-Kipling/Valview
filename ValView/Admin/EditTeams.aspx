@@ -97,6 +97,40 @@
                                     </div>
                                 </div>
                             </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <asp:Label ID="lblOutput" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <asp:Button class="btn btn-info btn-lg" ID="btnAdd" runat="server" Text="Add New Team" OnClick="btnAdd_Click"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <asp:Button class="btn btn-warning btn-lg" ID="btnClear" runat="server" Text="Clear Form" OnClick="btnClear_Click"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <asp:Button class="btn btn-primary btn-lg" ID="btnUpdate" runat="server" Text="Update Details" OnClick="btnUpdate_Click"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <asp:Button class="btn btn-danger btn-lg" ID="btnDelete" runat="server" Text="Delete Team" OnClick="btnDelete_Click"/>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
