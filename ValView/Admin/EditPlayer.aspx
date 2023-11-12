@@ -67,7 +67,7 @@
                                         <div class="form-group">
                                             <asp:DropDownList class="form-control" ID="drpDiv" runat="server" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="Select Division" Value=""></asp:ListItem>
-                                                <asp:ListItem Text="N/A" Value=""></asp:ListItem>
+                                                <asp:ListItem Text="N/A" Value="N/A"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                         <div class="form-group">
                                             <asp:DropDownList class="form-control" ID="drpSecRole" runat="server" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="Select Role" Value=""></asp:ListItem>
-                                                <asp:ListItem Text="N/A" Value=""></asp:ListItem>
+                                                <asp:ListItem Text="N/A" Value="N/A"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -108,13 +108,27 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <asp:Button class="btn btn-primary btn-lg" ID="btnUpdate" runat="server" Text="Update Details" />
+                                            <asp:Button class="btn btn-info btn-lg" ID="btnAdd" runat="server" Text="Add New Player" OnClick="btnAdd_Click"/>
                                         </div>
                                     </div>
 
                                     <div class="col">
                                         <div class="form-group">
-                                            <asp:Button class="btn btn-danger btn-lg" ID="btnDelete" runat="server" Text="Delete Player" />
+                                            <asp:Button class="btn btn-warning btn-lg" ID="btnClear" runat="server" Text="Clear Form" OnClick="btnClear_Click"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <asp:Button class="btn btn-primary btn-lg" ID="btnUpdate" runat="server" Text="Update Details" OnClick="btnUpdate_Click"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <asp:Button class="btn btn-danger btn-lg" ID="btnDelete" runat="server" Text="Delete Player" OnClick="btnDelete_Click"/>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +138,7 @@
                 </div>
             </div>
 
-        <div class="col-lg-7  mx-auto my-4">
+        <div class="col-lg-7  mx-auto my-4 table-responsive">
             <asp:GridView ID="gvPlayers" CssClass="table table-bordered table-hover table-sm table-dark" AutoGenerateColumns="false" runat="server" OnSelectedIndexChanged="gvPlayers_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID"/>

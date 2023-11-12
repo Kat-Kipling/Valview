@@ -106,5 +106,22 @@ namespace ValoViewWebservice
             return DataAccess.getRoles();
         }
 
+        [WebMethod]
+        public void deletePlayer(int id)
+        {
+            DataAccess.deletePlayer(id);
+        }
+
+        [WebMethod]
+        public void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        {
+            DataAccess.editPlayer(id, name, team, country, rank, division, mainRole, secRole, mainAgent);
+        }
+
+        [WebMethod]
+        public void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        {
+            DataAccess.addNewPlayer(name, team, country, rank, division, mainRole, secRole, mainAgent);
+        }
     }
 }

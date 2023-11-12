@@ -98,5 +98,33 @@ namespace ValView.Admin
             }
             drpAgent.Items.FindByText(playerDetails[8]).Selected = true;
         }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            drpDiv.ClearSelection();
+            drpAgent.ClearSelection();
+            drpMainRole.ClearSelection();
+            drpSecRole.ClearSelection();
+            drpRank.ClearSelection();
+            drpTeam.ClearSelection();
+            txtPlayerID.Text = string.Empty;
+            txtPlayerName.Text = string.Empty;
+            txtPlayerCountry.Text = string.Empty;
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

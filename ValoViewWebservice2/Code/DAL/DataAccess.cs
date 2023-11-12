@@ -281,5 +281,61 @@ namespace ValoViewWebservice.App_Code.DAL
             conn.Close();
             return tournamentInfo;
         }
+
+        public static void deletePlayer(int id)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "DELETE * " +
+                "FROM tblPlayers " +
+                "WHERE tblPlayers.[ID] = " + id + ";";
+
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
+
+        public static void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "UPDATE tblPlayers " +
+                "SET Username = " + name + ", " +
+                "Team = " + team + ", " +
+                "Country = " + country + ", " +
+                "Rank = " + rank + ", " +
+                "Division = " + division + ", " +
+                "[Main Role] = " + mainRole + ", " +
+                "[Secondary Role] = " + secRole + ", " +
+                "[Main Agent] = " + mainAgent + " " +
+                "WHERE tblPlayers.[ID] = " + id + ";";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
+
+        public static void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                "VALUES (' " + name + "', " +
+                team + ", " +
+                "'" + country + "', " +
+                rank + ", " +
+                division + ", " +
+                mainRole + ", " +
+                secRole + ", " +
+                mainAgent + ");";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
     }
 }
