@@ -280,6 +280,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getRegions">
+        <s:complexType />
+      </s:element>
+      <s:element name="getRegionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getTournamentSeriesByNameSoapIn">
@@ -384,6 +401,12 @@
   <wsdl:message name="getTeamInfoSoapOut">
     <wsdl:part name="parameters" element="tns:getTeamInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="getRegionsSoapIn">
+    <wsdl:part name="parameters" element="tns:getRegions" />
+  </wsdl:message>
+  <wsdl:message name="getRegionsSoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ValoViewAPISoap">
     <wsdl:operation name="getTournamentSeriesByName">
       <wsdl:input message="tns:getTournamentSeriesByNameSoapIn" />
@@ -452,6 +475,10 @@
     <wsdl:operation name="getTeamInfo">
       <wsdl:input message="tns:getTeamInfoSoapIn" />
       <wsdl:output message="tns:getTeamInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegions">
+      <wsdl:input message="tns:getRegionsSoapIn" />
+      <wsdl:output message="tns:getRegionsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ValoViewAPISoap" type="tns:ValoViewAPISoap">
@@ -609,6 +636,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getRegions">
+      <soap:operation soapAction="http://tempuri.org/getRegions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ValoViewAPISoap12" type="tns:ValoViewAPISoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -758,6 +794,15 @@
     </wsdl:operation>
     <wsdl:operation name="getTeamInfo">
       <soap12:operation soapAction="http://tempuri.org/getTeamInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegions">
+      <soap12:operation soapAction="http://tempuri.org/getRegions" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

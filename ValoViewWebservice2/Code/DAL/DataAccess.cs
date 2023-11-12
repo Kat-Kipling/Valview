@@ -271,9 +271,17 @@ namespace ValoViewWebservice.App_Code.DAL
             OleDbDataReader reader = cmd.ExecuteReader();
 
             List<string> teamMembers = new List<string>(5);
+            int totalTeamMems = 0;
             while (reader.Read())
             {
                 teamMembers.Add(reader.GetString(0));
+                totalTeamMems++;
+            }
+
+            while(totalTeamMems < 5)
+            {
+                teamMembers.Add("---EMPTY---");
+                totalTeamMems++;
             }
 
             return teamMembers;
@@ -402,6 +410,19 @@ namespace ValoViewWebservice.App_Code.DAL
 
             reader.Close();
             conn.Close();
+        }
+        public static DataSet getRegions()
+        {
+            DataSet regions = new DataSet();
+
+            OleDbConnection conn = openConnection();
+            string sqlCmd = "SELECT * FROM tblRegions;";
+
+            OleDbDataAdapter daRegions = new OleDbDataAdapter(sqlCmd, conn);
+            daRegions.Fill(regions, "dtRegions");
+            conn.Close();
+
+            return regions;
         }
 
         public static void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)

@@ -131,5 +131,11 @@ namespace ValoViewWebservice
             Team team = new Team(id);
             return team.getDetails();
         }
+
+        [WebMethod]
+        public DataSet getRegions()
+        {
+            return DataAccess.getRegions();
+        }
     }
 }

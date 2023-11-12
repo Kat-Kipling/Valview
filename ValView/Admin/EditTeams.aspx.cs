@@ -19,9 +19,15 @@ namespace ValView.Admin
             {
                 DataSet teams = valoViewAPI.getTeams();
                 DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
+                DataSet regions = valoViewAPI.getRegions();
 
                 gvTeams.DataSource = teams.Tables["dtTeams"];
                 gvTeams.DataBind();
+
+                drpRegion.DataSource = regions.Tables["dtRegions"];
+                drpRegion.DataTextField = "Region Name";
+                drpRegion.DataValueField = "Region ID";
+                drpRegion.DataBind();
 
                 drpTeam1.DataSource = allPlayers.Tables["dtPlayers"];
                 drpTeam2.DataSource = allPlayers.Tables["dtPlayers"];
@@ -51,9 +57,62 @@ namespace ValView.Admin
             int id = Convert.ToInt32(gvTeams.SelectedRow.Cells[0].Text);
             List<string> teamDetails = valoViewAPI.getTeamInfo(id).ToList();
 
-            foreach (var item in teamDetails)
+            txtTeamID.Text = teamDetails[0];
+            txtTeamName.Text = teamDetails[1];
+            txtTeamCountry.Text = teamDetails[2];
+
+            drpRegion.ClearSelection();
+            drpTeam1.ClearSelection();
+            drpTeam2.ClearSelection();
+            drpTeam3.ClearSelection();
+            drpTeam4.ClearSelection();
+            drpTeam5.ClearSelection();
+
+            drpRegion.Items.FindByText(teamDetails[3]).Selected = true;
+            
+            if(!teamDetails[4].Equals("---EMPTY---"))
             {
-                Debug.WriteLine(item);
+                drpTeam1.Items.FindByText(teamDetails[4]).Selected = true;
+            }
+            else
+            {
+                drpTeam1.Items[1].Selected = true;
+            }
+
+            if (!teamDetails[5].Equals("---EMPTY---"))
+            {
+                drpTeam2.Items.FindByText(teamDetails[5]).Selected = true;
+            }
+            else
+            {
+                drpTeam2.Items[1].Selected = true;
+            }
+
+            if (!teamDetails[6].Equals("---EMPTY---"))
+            {
+                drpTeam3.Items.FindByText(teamDetails[6]).Selected = true;
+            }
+            else
+            {
+                drpTeam3.Items[1].Selected = true;
+            }
+
+            if (!teamDetails[7].Equals("---EMPTY---"))
+            {
+                drpTeam4.Items.FindByText(teamDetails[7]).Selected = true;
+            }
+            else
+            {
+                drpTeam4.Items[1].Selected = true;
+            }
+
+            if (!teamDetails[8].Equals("---EMPTY---"))
+            {
+                drpTeam5.Items.FindByText(teamDetails[8]).Selected = true;
+            }
+            else
+            {
+                drpTeam5.Items[1].Selected = true;
             }
         }
     }

@@ -64,6 +64,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback getTeamInfoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getRegionsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -152,6 +154,9 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event getTeamInfoCompletedEventHandler getTeamInfoCompleted;
+        
+        /// <remarks/>
+        public event getRegionsCompletedEventHandler getRegionsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -660,6 +665,33 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getRegions", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getRegions() {
+            object[] results = this.Invoke("getRegions", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getRegionsAsync() {
+            this.getRegionsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getRegionsAsync(object userState) {
+            if ((this.getRegionsOperationCompleted == null)) {
+                this.getRegionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetRegionsOperationCompleted);
+            }
+            this.InvokeAsync("getRegions", new object[0], this.getRegionsOperationCompleted, userState);
+        }
+        
+        private void OngetRegionsOperationCompleted(object arg) {
+            if ((this.getRegionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getRegionsCompleted(this, new getRegionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1050,6 +1082,32 @@ namespace ValView.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getRegionsCompletedEventHandler(object sender, getRegionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getRegionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getRegionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }
