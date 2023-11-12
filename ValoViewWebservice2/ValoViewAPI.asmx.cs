@@ -73,6 +73,12 @@ namespace ValoViewWebservice
         }
 
         [WebMethod]
+        public int getPlayerIdByName(string name)
+        {
+            return DataAccess.GetPlayerIdByName(name);
+        }
+
+        [WebMethod]
         public DataSet getAllPlayerInfo()
         {
             return DataAccess.getAllPlayerInfo();
@@ -136,6 +142,30 @@ namespace ValoViewWebservice
         public DataSet getRegions()
         {
             return DataAccess.getRegions();
+        }
+
+        [WebMethod]
+        public void removePlayerFromTeam(int id)
+        {
+            DataAccess.removePlayerFromTeam(id);
+        }
+
+        [WebMethod]
+        public void addPlayerToTeam(int playerId, int teamId)
+        {
+            DataAccess.addPlayerToTeam(playerId, teamId);
+        }
+
+        [WebMethod]
+        public void addTeam(string teamName, int regionId, string country)
+        {
+            DataAccess.addEmptyTeam(teamName, regionId, country);
+        }
+
+        [WebMethod]
+        public int getTeamIdByName(string name)
+        {
+            return DataAccess.GetTeamIdByName(name);
         }
     }
 }

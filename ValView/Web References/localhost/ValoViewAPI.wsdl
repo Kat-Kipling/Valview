@@ -119,6 +119,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getPlayerIdByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPlayerIdByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getPlayerIdByNameResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getAllPlayerInfo">
         <s:complexType />
       </s:element>
@@ -297,6 +311,53 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="removePlayerFromTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removePlayerFromTeamResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="addPlayerToTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playerId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="teamId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addPlayerToTeamResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="addTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="teamName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="regionId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addTeamResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getTeamIdByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTeamIdByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getTeamIdByNameResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getTournamentSeriesByNameSoapIn">
@@ -340,6 +401,12 @@
   </wsdl:message>
   <wsdl:message name="getPlayerDetailsSoapOut">
     <wsdl:part name="parameters" element="tns:getPlayerDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPlayerIdByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getPlayerIdByName" />
+  </wsdl:message>
+  <wsdl:message name="getPlayerIdByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getPlayerIdByNameResponse" />
   </wsdl:message>
   <wsdl:message name="getAllPlayerInfoSoapIn">
     <wsdl:part name="parameters" element="tns:getAllPlayerInfo" />
@@ -407,6 +474,30 @@
   <wsdl:message name="getRegionsSoapOut">
     <wsdl:part name="parameters" element="tns:getRegionsResponse" />
   </wsdl:message>
+  <wsdl:message name="removePlayerFromTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:removePlayerFromTeam" />
+  </wsdl:message>
+  <wsdl:message name="removePlayerFromTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:removePlayerFromTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="addPlayerToTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:addPlayerToTeam" />
+  </wsdl:message>
+  <wsdl:message name="addPlayerToTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:addPlayerToTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="addTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:addTeam" />
+  </wsdl:message>
+  <wsdl:message name="addTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:addTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTeamIdByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getTeamIdByName" />
+  </wsdl:message>
+  <wsdl:message name="getTeamIdByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getTeamIdByNameResponse" />
+  </wsdl:message>
   <wsdl:portType name="ValoViewAPISoap">
     <wsdl:operation name="getTournamentSeriesByName">
       <wsdl:input message="tns:getTournamentSeriesByNameSoapIn" />
@@ -435,6 +526,10 @@
     <wsdl:operation name="getPlayerDetails">
       <wsdl:input message="tns:getPlayerDetailsSoapIn" />
       <wsdl:output message="tns:getPlayerDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPlayerIdByName">
+      <wsdl:input message="tns:getPlayerIdByNameSoapIn" />
+      <wsdl:output message="tns:getPlayerIdByNameSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getAllPlayerInfo">
       <wsdl:input message="tns:getAllPlayerInfoSoapIn" />
@@ -479,6 +574,22 @@
     <wsdl:operation name="getRegions">
       <wsdl:input message="tns:getRegionsSoapIn" />
       <wsdl:output message="tns:getRegionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="removePlayerFromTeam">
+      <wsdl:input message="tns:removePlayerFromTeamSoapIn" />
+      <wsdl:output message="tns:removePlayerFromTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addPlayerToTeam">
+      <wsdl:input message="tns:addPlayerToTeamSoapIn" />
+      <wsdl:output message="tns:addPlayerToTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addTeam">
+      <wsdl:input message="tns:addTeamSoapIn" />
+      <wsdl:output message="tns:addTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTeamIdByName">
+      <wsdl:input message="tns:getTeamIdByNameSoapIn" />
+      <wsdl:output message="tns:getTeamIdByNameSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ValoViewAPISoap" type="tns:ValoViewAPISoap">
@@ -539,6 +650,15 @@
     </wsdl:operation>
     <wsdl:operation name="getPlayerDetails">
       <soap:operation soapAction="http://tempuri.org/getPlayerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPlayerIdByName">
+      <soap:operation soapAction="http://tempuri.org/getPlayerIdByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -645,6 +765,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="removePlayerFromTeam">
+      <soap:operation soapAction="http://tempuri.org/removePlayerFromTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPlayerToTeam">
+      <soap:operation soapAction="http://tempuri.org/addPlayerToTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTeam">
+      <soap:operation soapAction="http://tempuri.org/addTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeamIdByName">
+      <soap:operation soapAction="http://tempuri.org/getTeamIdByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ValoViewAPISoap12" type="tns:ValoViewAPISoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -704,6 +860,15 @@
     </wsdl:operation>
     <wsdl:operation name="getPlayerDetails">
       <soap12:operation soapAction="http://tempuri.org/getPlayerDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPlayerIdByName">
+      <soap12:operation soapAction="http://tempuri.org/getPlayerIdByName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -803,6 +968,42 @@
     </wsdl:operation>
     <wsdl:operation name="getRegions">
       <soap12:operation soapAction="http://tempuri.org/getRegions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePlayerFromTeam">
+      <soap12:operation soapAction="http://tempuri.org/removePlayerFromTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPlayerToTeam">
+      <soap12:operation soapAction="http://tempuri.org/addPlayerToTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTeam">
+      <soap12:operation soapAction="http://tempuri.org/addTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTeamIdByName">
+      <soap12:operation soapAction="http://tempuri.org/getTeamIdByName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

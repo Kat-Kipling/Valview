@@ -78,7 +78,14 @@ namespace ValView.Admin
             drpRank.ClearSelection();
             drpTeam.ClearSelection();
 
-            drpTeam.Items.FindByText(playerDetails[2]).Selected = true;
+            if (!playerDetails[2].Equals(""))
+            {
+                drpTeam.Items.FindByText(playerDetails[2]).Selected = true;
+            }
+            else
+            {
+                drpDiv.Items[1].Selected = true;
+            }
             txtPlayerCountry.Text = playerDetails[3];
             drpRank.Items.FindByText(playerDetails[4]).Selected = true;
             if (!playerDetails[5].Equals(""))

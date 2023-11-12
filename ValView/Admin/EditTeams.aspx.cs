@@ -115,5 +115,142 @@ namespace ValView.Admin
                 drpTeam5.Items[1].Selected = true;
             }
         }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (drpTeam1.SelectedValue != "" &&
+                    drpTeam2.SelectedValue != "" &&
+                    drpTeam3.SelectedValue != "" &&
+                    drpTeam4.SelectedValue != "" &&
+                    drpTeam5.SelectedValue != "" &&
+                    drpRegion.SelectedValue != "" &&
+                    !String.IsNullOrEmpty(txtTeamName.Text) &&
+                    !String.IsNullOrEmpty(txtTeamCountry.Text))
+            {
+                valoViewAPI.addTeam(txtTeamName.Text, Convert.ToInt32(drpRegion.SelectedItem.Value), txtTeamCountry.Text);
+                int teamId = valoViewAPI.getTeamIdByName(txtTeamName.Text);
+
+                if(Convert.ToInt32(drpTeam1.SelectedValue) != -1)
+                {
+                    valoViewAPI.addPlayerToTeam(Convert.ToInt32(drpTeam1.SelectedValue), teamId);
+                }
+
+                if (Convert.ToInt32(drpTeam2.SelectedValue) != -1)
+                {
+                    valoViewAPI.addPlayerToTeam(Convert.ToInt32(drpTeam2.SelectedValue), teamId);
+                }
+
+                if (Convert.ToInt32(drpTeam3.SelectedValue) != -1)
+                {
+                    valoViewAPI.addPlayerToTeam(Convert.ToInt32(drpTeam3.SelectedValue), teamId);
+                }
+
+                if (Convert.ToInt32(drpTeam4.SelectedValue) != -1)
+                {
+                    valoViewAPI.addPlayerToTeam(Convert.ToInt32(drpTeam4.SelectedValue), teamId);
+                }
+
+                if (Convert.ToInt32(drpTeam5.SelectedValue) != -1)
+                {
+                    valoViewAPI.addPlayerToTeam(Convert.ToInt32(drpTeam5.SelectedValue), teamId);
+                }
+
+                lblOutput.Text = "Team created!";
+                DataSet teams = valoViewAPI.getTeams();
+                gvTeams.DataSource = teams.Tables["dtTeams"];
+                gvTeams.DataBind();
+            }
+            else
+            {
+                lblOutput.Text = "Please ensure all fields are valid.";
+            }
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtTeamID.Text = string.Empty;
+            txtTeamName.Text = string.Empty;
+            txtTeamCountry.Text = string.Empty;
+
+            drpRegion.ClearSelection();
+            drpTeam1.ClearSelection();
+            drpTeam2.ClearSelection();
+            drpTeam3.ClearSelection();
+            drpTeam4.ClearSelection();
+            drpTeam5.ClearSelection();
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+                if (drpTeam1.SelectedValue != "" &&
+                    drpTeam2.SelectedValue != "" &&
+                    drpTeam3.SelectedValue != "" &&
+                    drpTeam4.SelectedValue != "" &&
+                    drpTeam5.SelectedValue != "" &&
+                    drpRegion.SelectedValue != "" &&
+                    !String.IsNullOrEmpty(txtTeamName.Text) &&
+                    !String.IsNullOrEmpty(txtTeamCountry.Text))
+                {
+
+                    int teamId = Convert.ToInt32(gvTeams.SelectedRow.Cells[0].Text);
+                    List<String> oldTeamDetails = valoViewAPI.getTeamInfo(teamId).ToList();
+                    int oldTeam1Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[4]);
+                    int oldTeam2Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[5]);
+                    int oldTeam3Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[6]);
+                    int oldTeam4Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[7]);
+                    int oldTeam5Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[8]);
+
+                    int newTeamMem1Id = Convert.ToInt32(drpTeam1.SelectedItem.Value);
+                    int newTeamMem2Id = Convert.ToInt32(drpTeam2.SelectedItem.Value);
+                    int newTeamMem3Id = Convert.ToInt32(drpTeam3.SelectedItem.Value);
+                    int newTeamMem4Id = Convert.ToInt32(drpTeam4.SelectedItem.Value);
+                    int newTeamMem5Id = Convert.ToInt32(drpTeam5.SelectedItem.Value);
+
+                    if(newTeamMem1Id != oldTeam1Id)
+                    {
+                        valoViewAPI.removePlayerFromTeam(oldTeam1Id);
+                    }
+
+                    if (newTeamMem2Id != oldTeam2Id)
+                    {
+                        valoViewAPI.removePlayerFromTeam(oldTeam2Id);
+                    }
+
+                    if (newTeamMem3Id != oldTeam3Id)
+                    {
+                        valoViewAPI.removePlayerFromTeam(oldTeam3Id);
+                    }
+
+                    if (newTeamMem4Id != oldTeam4Id)
+                    {
+                        valoViewAPI.removePlayerFromTeam(oldTeam4Id);
+                    }
+
+                    if (newTeamMem5Id != oldTeam5Id)
+                    {
+                        valoViewAPI.removePlayerFromTeam(oldTeam5Id);
+                    }
+
+                    valoViewAPI.addPlayerToTeam(newTeamMem1Id, Convert.ToInt32(txtTeamID.Text));
+                    valoViewAPI.addPlayerToTeam(newTeamMem2Id, Convert.ToInt32(txtTeamID.Text));
+                    valoViewAPI.addPlayerToTeam(newTeamMem3Id, Convert.ToInt32(txtTeamID.Text));
+                    valoViewAPI.addPlayerToTeam(newTeamMem4Id, Convert.ToInt32(txtTeamID.Text));
+                    valoViewAPI.addPlayerToTeam(newTeamMem5Id, Convert.ToInt32(txtTeamID.Text));
+
+                    lblOutput.Text = "Team updated!";
+                    DataSet teams = valoViewAPI.getTeams();
+                    gvTeams.DataSource = teams.Tables["dtTeams"];
+                    gvTeams.DataBind();
+                }
+                else
+                {
+                    lblOutput.Text = "Please ensure all fields are valid.";
+                }
+            }
+
+            protected void btnDelete_Click(object sender, EventArgs e)
+            {
+
+            }
     }
 }

@@ -44,6 +44,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback getPlayerDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getPlayerIdByNameOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getAllPlayerInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback getRanksOperationCompleted;
@@ -65,6 +67,14 @@ namespace ValView.localhost {
         private System.Threading.SendOrPostCallback getTeamInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback getRegionsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback removePlayerFromTeamOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addPlayerToTeamOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addTeamOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getTeamIdByNameOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -126,6 +136,9 @@ namespace ValView.localhost {
         public event getPlayerDetailsCompletedEventHandler getPlayerDetailsCompleted;
         
         /// <remarks/>
+        public event getPlayerIdByNameCompletedEventHandler getPlayerIdByNameCompleted;
+        
+        /// <remarks/>
         public event getAllPlayerInfoCompletedEventHandler getAllPlayerInfoCompleted;
         
         /// <remarks/>
@@ -157,6 +170,18 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event getRegionsCompletedEventHandler getRegionsCompleted;
+        
+        /// <remarks/>
+        public event removePlayerFromTeamCompletedEventHandler removePlayerFromTeamCompleted;
+        
+        /// <remarks/>
+        public event addPlayerToTeamCompletedEventHandler addPlayerToTeamCompleted;
+        
+        /// <remarks/>
+        public event addTeamCompletedEventHandler addTeamCompleted;
+        
+        /// <remarks/>
+        public event getTeamIdByNameCompletedEventHandler getTeamIdByNameCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -356,6 +381,35 @@ namespace ValView.localhost {
             if ((this.getPlayerDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getPlayerDetailsCompleted(this, new getPlayerDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getPlayerIdByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getPlayerIdByName(string name) {
+            object[] results = this.Invoke("getPlayerIdByName", new object[] {
+                        name});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getPlayerIdByNameAsync(string name) {
+            this.getPlayerIdByNameAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void getPlayerIdByNameAsync(string name, object userState) {
+            if ((this.getPlayerIdByNameOperationCompleted == null)) {
+                this.getPlayerIdByNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPlayerIdByNameOperationCompleted);
+            }
+            this.InvokeAsync("getPlayerIdByName", new object[] {
+                        name}, this.getPlayerIdByNameOperationCompleted, userState);
+        }
+        
+        private void OngetPlayerIdByNameOperationCompleted(object arg) {
+            if ((this.getPlayerIdByNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getPlayerIdByNameCompleted(this, new getPlayerIdByNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -692,6 +746,125 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/removePlayerFromTeam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void removePlayerFromTeam(int id) {
+            this.Invoke("removePlayerFromTeam", new object[] {
+                        id});
+        }
+        
+        /// <remarks/>
+        public void removePlayerFromTeamAsync(int id) {
+            this.removePlayerFromTeamAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void removePlayerFromTeamAsync(int id, object userState) {
+            if ((this.removePlayerFromTeamOperationCompleted == null)) {
+                this.removePlayerFromTeamOperationCompleted = new System.Threading.SendOrPostCallback(this.OnremovePlayerFromTeamOperationCompleted);
+            }
+            this.InvokeAsync("removePlayerFromTeam", new object[] {
+                        id}, this.removePlayerFromTeamOperationCompleted, userState);
+        }
+        
+        private void OnremovePlayerFromTeamOperationCompleted(object arg) {
+            if ((this.removePlayerFromTeamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.removePlayerFromTeamCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addPlayerToTeam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void addPlayerToTeam(int playerId, int teamId) {
+            this.Invoke("addPlayerToTeam", new object[] {
+                        playerId,
+                        teamId});
+        }
+        
+        /// <remarks/>
+        public void addPlayerToTeamAsync(int playerId, int teamId) {
+            this.addPlayerToTeamAsync(playerId, teamId, null);
+        }
+        
+        /// <remarks/>
+        public void addPlayerToTeamAsync(int playerId, int teamId, object userState) {
+            if ((this.addPlayerToTeamOperationCompleted == null)) {
+                this.addPlayerToTeamOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddPlayerToTeamOperationCompleted);
+            }
+            this.InvokeAsync("addPlayerToTeam", new object[] {
+                        playerId,
+                        teamId}, this.addPlayerToTeamOperationCompleted, userState);
+        }
+        
+        private void OnaddPlayerToTeamOperationCompleted(object arg) {
+            if ((this.addPlayerToTeamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addPlayerToTeamCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addTeam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void addTeam(string teamName, int regionId, string country) {
+            this.Invoke("addTeam", new object[] {
+                        teamName,
+                        regionId,
+                        country});
+        }
+        
+        /// <remarks/>
+        public void addTeamAsync(string teamName, int regionId, string country) {
+            this.addTeamAsync(teamName, regionId, country, null);
+        }
+        
+        /// <remarks/>
+        public void addTeamAsync(string teamName, int regionId, string country, object userState) {
+            if ((this.addTeamOperationCompleted == null)) {
+                this.addTeamOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddTeamOperationCompleted);
+            }
+            this.InvokeAsync("addTeam", new object[] {
+                        teamName,
+                        regionId,
+                        country}, this.addTeamOperationCompleted, userState);
+        }
+        
+        private void OnaddTeamOperationCompleted(object arg) {
+            if ((this.addTeamCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addTeamCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTeamIdByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getTeamIdByName(string name) {
+            object[] results = this.Invoke("getTeamIdByName", new object[] {
+                        name});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTeamIdByNameAsync(string name) {
+            this.getTeamIdByNameAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void getTeamIdByNameAsync(string name, object userState) {
+            if ((this.getTeamIdByNameOperationCompleted == null)) {
+                this.getTeamIdByNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTeamIdByNameOperationCompleted);
+            }
+            this.InvokeAsync("getTeamIdByName", new object[] {
+                        name}, this.getTeamIdByNameOperationCompleted, userState);
+        }
+        
+        private void OngetTeamIdByNameOperationCompleted(object arg) {
+            if ((this.getTeamIdByNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTeamIdByNameCompleted(this, new getTeamIdByNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -888,6 +1061,32 @@ namespace ValView.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getPlayerIdByNameCompletedEventHandler(object sender, getPlayerIdByNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getPlayerIdByNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getPlayerIdByNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -1108,6 +1307,44 @@ namespace ValView.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void removePlayerFromTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void addPlayerToTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void addTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getTeamIdByNameCompletedEventHandler(object sender, getTeamIdByNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTeamIdByNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTeamIdByNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

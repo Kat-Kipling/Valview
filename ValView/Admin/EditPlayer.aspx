@@ -47,6 +47,7 @@
                                         <div class="form-group">
                                             <asp:DropDownList class="form-control" ID="drpTeam" runat="server" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="Select Team" Value=""></asp:ListItem>
+                                                <asp:ListItem Text="Free Agent" Value=""></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>

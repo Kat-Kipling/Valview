@@ -7,6 +7,9 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.Remoting.Messaging;
 using System.Diagnostics;
+using ValoViewWebservice.App_Code.BAL;
+using ValoViewWebservice2.Code.BAL;
+using System.Xml.Linq;
 
 namespace ValoViewWebservice.App_Code.DAL
 {
@@ -291,9 +294,9 @@ namespace ValoViewWebservice.App_Code.DAL
             DataSet ds = new DataSet();
 
             OleDbConnection conn = openConnection();
-            string sqlStr = "SELECT p.ID, p.Username, t.[Team Name] AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, IIf(IsNull(mr.[Role Name]), '', mr.[Role Name]) AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent, p.[Picture URL] " +
+            string sqlStr = "SELECT p.ID, p.Username,  IIf(IsNull(t.[Team Name]), '', t.[Team Name]) AS Team, p.Country, r.[Rank Name] AS Rank, IIf(IsNull(d.Division), '', d.Division) AS Division, IIf(IsNull(mr.[Role Name]), '', mr.[Role Name]) AS MainRole, IIf(IsNull(sr.[Role Name]), '', sr.[Role Name]) AS SecondaryRole, a.[Agent Name] AS MainAgent, p.[Picture URL] " +
                 "FROM(((((tblPlayers AS p " +
-                "INNER JOIN tblTeams AS t ON p.Team = t.[Team ID]) " +
+                "LEFT JOIN tblTeams AS t ON p.Team = t.[Team ID]) " +
                 "INNER JOIN tblRanks AS r ON p.Rank = r.ID) " +
                 "LEFT JOIN tblDivisions AS d ON p.Division = d.ID) " +
                 "LEFT JOIN tblAgentRoles AS mr ON p.[Main Role] = mr.ID) " +
@@ -340,6 +343,81 @@ namespace ValoViewWebservice.App_Code.DAL
                 "FROM tblPlayers " +
                 "WHERE tblPlayers.[ID] = " + id + ";";
 
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
+
+        public static void removePlayerFromTeam(int id)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "UPDATE tblPlayers " +
+                "SET Team = NULL " +
+                "WHERE tblPlayers.[ID] = " + id + ";";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            reader.Close();
+            conn.Close();
+        }
+
+        public static int GetPlayerIdByName(string name)
+        {
+            if (!name.Equals("---EMPTY---"))
+            {
+                OleDbConnection conn = openConnection();
+                string sqlStr = "SELECT tblPlayers.[ID] " +
+                    "FROM tblPlayers " +
+                    "WHERE tblPlayers.[Username] = '" + name + "';";
+
+                OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+                int id = (int)cmd.ExecuteScalar();
+                conn.Close();
+                return id;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public static int GetTeamIdByName(string name)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "SELECT tblTeams.[Team ID] " +
+                "FROM tblTeams " +
+                "WHERE tblTeams.[Team Name] = '" + name + "';";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            int id = (int)cmd.ExecuteScalar();
+            conn.Close();
+            return id;
+        }
+
+        public static void addEmptyTeam(string teamName, int regionId, string country)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "INSERT INTO tblTeams ([Team Name], [Region ID], Country) " +
+                                    "VALUES ('" + teamName + "', " +
+                                    "" + regionId + ", " +
+                                    "'" + country + "')";
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
+
+        public static void addPlayerToTeam(int playerId, int teamId)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "UPDATE tblPlayers " +
+                "SET Team = ' " + teamId + "' " +
+                "WHERE tblPlayers.[ID] = " + playerId + ";";
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
             OleDbDataReader reader = cmd.ExecuteReader();
@@ -429,6 +507,8 @@ namespace ValoViewWebservice.App_Code.DAL
         {
             OleDbConnection conn = openConnection();
             string sqlStr = "";
+
+
             if (division == -1 && secRole != -1) // Has a secondary role, doesn't have a division
             {
                 sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
