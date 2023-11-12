@@ -50,6 +50,7 @@
                                     <div class="form-group">
                                         <asp:DropDownList class="form-control" ID="drpTeam1" runat="server" AppendDataBoundItems="true">
                                             <asp:ListItem Text="Select Team Member" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="---OPEN---" Value="-1"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -59,6 +60,7 @@
                                     <div class="form-group">
                                         <asp:DropDownList class="form-control" ID="drpTeam2" runat="server" AppendDataBoundItems="true">
                                             <asp:ListItem Text="Select Team Member" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="---OPEN---" Value="-1"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -68,6 +70,7 @@
                                     <div class="form-group">
                                         <asp:DropDownList class="form-control" ID="drpTeam3" runat="server" AppendDataBoundItems="true">
                                             <asp:ListItem Text="Select Team Member" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="---OPEN---" Value="-1"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -79,6 +82,7 @@
                                     <div class="form-group">
                                         <asp:DropDownList class="form-control" ID="drpTeam4" runat="server" AppendDataBoundItems="true">
                                             <asp:ListItem Text="Select Team Member" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="---OPEN---" Value="-1"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -88,6 +92,7 @@
                                     <div class="form-group">
                                         <asp:DropDownList class="form-control" ID="drpTeam5" runat="server" AppendDataBoundItems="true">
                                             <asp:ListItem Text="Select Team Member" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="---OPEN---" Value="-1"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>

@@ -16,10 +16,32 @@ namespace ValView.Admin
         {
             if(!IsPostBack)
             {
-                DataSet ds = valoViewAPI.getTeams();
+                DataSet teams = valoViewAPI.getTeams();
+                DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
 
-                gvTeams.DataSource = ds.Tables["dtTeams"];
+                gvTeams.DataSource = teams.Tables["dtTeams"];
                 gvTeams.DataBind();
+
+                drpTeam1.DataSource = allPlayers.Tables["dtPlayers"];
+                drpTeam2.DataSource = allPlayers.Tables["dtPlayers"];
+                drpTeam3.DataSource = allPlayers.Tables["dtPlayers"];
+                drpTeam4.DataSource = allPlayers.Tables["dtPlayers"];
+                drpTeam5.DataSource = allPlayers.Tables["dtPlayers"];
+                drpTeam1.DataTextField = "Username";
+                drpTeam1.DataValueField = "ID";
+                drpTeam2.DataTextField = "Username";
+                drpTeam2.DataValueField = "ID";
+                drpTeam3.DataTextField = "Username";
+                drpTeam3.DataValueField = "ID";
+                drpTeam4.DataTextField = "Username";
+                drpTeam4.DataValueField = "ID";
+                drpTeam5.DataTextField = "Username";
+                drpTeam5.DataValueField = "ID";
+                drpTeam1.DataBind();
+                drpTeam2.DataBind();
+                drpTeam3.DataBind();
+                drpTeam4.DataBind();
+                drpTeam5.DataBind();
             }
         }
 
