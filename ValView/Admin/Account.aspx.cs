@@ -35,5 +35,10 @@ namespace ValView.Admin
         {
             Response.Redirect("EditPlayer.aspx", true);
         }
+
+        protected void btnTeamManagement_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EditTeams.aspx", true);
+        }
     }
 }
