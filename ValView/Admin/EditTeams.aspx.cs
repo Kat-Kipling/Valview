@@ -155,6 +155,17 @@ namespace ValView.Admin
                     valoViewAPI.addPlayerToTeam(Convert.ToInt32(drpTeam5.SelectedValue), teamId);
                 }
 
+
+                txtTeamID.Text = string.Empty;
+                txtTeamName.Text = string.Empty;
+                txtTeamCountry.Text = string.Empty;
+
+                drpRegion.ClearSelection();
+                drpTeam1.ClearSelection();
+                drpTeam2.ClearSelection();
+                drpTeam3.ClearSelection();
+                drpTeam4.ClearSelection();
+                drpTeam5.ClearSelection();
                 lblOutput.Text = "Team created!";
                 DataSet teams = valoViewAPI.getTeams();
                 gvTeams.DataSource = teams.Tables["dtTeams"];
@@ -237,7 +248,19 @@ namespace ValView.Admin
                     valoViewAPI.addPlayerToTeam(newTeamMem4Id, Convert.ToInt32(txtTeamID.Text));
                     valoViewAPI.addPlayerToTeam(newTeamMem5Id, Convert.ToInt32(txtTeamID.Text));
 
-                    lblOutput.Text = "Team updated!";
+
+                txtTeamID.Text = string.Empty;
+                txtTeamName.Text = string.Empty;
+                txtTeamCountry.Text = string.Empty;
+
+                drpRegion.ClearSelection();
+                drpTeam1.ClearSelection();
+                drpTeam2.ClearSelection();
+                drpTeam3.ClearSelection();
+                drpTeam4.ClearSelection();
+                drpTeam5.ClearSelection();
+
+                lblOutput.Text = "Team updated!";
                     DataSet teams = valoViewAPI.getTeams();
                     gvTeams.DataSource = teams.Tables["dtTeams"];
                     gvTeams.DataBind();
@@ -250,7 +273,20 @@ namespace ValView.Admin
 
             protected void btnDelete_Click(object sender, EventArgs e)
             {
-
+            if (!String.IsNullOrEmpty(txtTeamID.Text))
+            {
+                ValoViewAPI valoViewAPI = new ValoViewAPI();
+                valoViewAPI.deleteTeam(Convert.ToInt32(txtTeamID.Text));
+                btnClear_Click(sender, e);
+                lblOutput.Text = "Team deleted!";
+                DataSet teams = valoViewAPI.getTeams();
+                gvTeams.DataSource = teams.Tables["dtTeams"];
+                gvTeams.DataBind();
             }
+            else
+            {
+                lblOutput.Text = "Please select a player first.";
+            }
+        }
     }
 }
