@@ -80,6 +80,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback deleteTeamOperationCompleted;
         
+        private System.Threading.SendOrPostCallback updateTeamDetailsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -192,6 +194,9 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event deleteTeamCompletedEventHandler deleteTeamCompleted;
+        
+        /// <remarks/>
+        public event updateTeamDetailsCompletedEventHandler updateTeamDetailsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -848,27 +853,29 @@ namespace ValView.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addTeam", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void addTeam(string teamName, int regionId, string country) {
+        public void addTeam(string teamName, int regionId, string country, string teamLogo) {
             this.Invoke("addTeam", new object[] {
                         teamName,
                         regionId,
-                        country});
+                        country,
+                        teamLogo});
         }
         
         /// <remarks/>
-        public void addTeamAsync(string teamName, int regionId, string country) {
-            this.addTeamAsync(teamName, regionId, country, null);
+        public void addTeamAsync(string teamName, int regionId, string country, string teamLogo) {
+            this.addTeamAsync(teamName, regionId, country, teamLogo, null);
         }
         
         /// <remarks/>
-        public void addTeamAsync(string teamName, int regionId, string country, object userState) {
+        public void addTeamAsync(string teamName, int regionId, string country, string teamLogo, object userState) {
             if ((this.addTeamOperationCompleted == null)) {
                 this.addTeamOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddTeamOperationCompleted);
             }
             this.InvokeAsync("addTeam", new object[] {
                         teamName,
                         regionId,
-                        country}, this.addTeamOperationCompleted, userState);
+                        country,
+                        teamLogo}, this.addTeamOperationCompleted, userState);
         }
         
         private void OnaddTeamOperationCompleted(object arg) {
@@ -932,6 +939,42 @@ namespace ValView.localhost {
             if ((this.deleteTeamCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.deleteTeamCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updateTeamDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void updateTeamDetails(int teamId, string teamName, int regionId, string country, string teamLogoUrl) {
+            this.Invoke("updateTeamDetails", new object[] {
+                        teamId,
+                        teamName,
+                        regionId,
+                        country,
+                        teamLogoUrl});
+        }
+        
+        /// <remarks/>
+        public void updateTeamDetailsAsync(int teamId, string teamName, int regionId, string country, string teamLogoUrl) {
+            this.updateTeamDetailsAsync(teamId, teamName, regionId, country, teamLogoUrl, null);
+        }
+        
+        /// <remarks/>
+        public void updateTeamDetailsAsync(int teamId, string teamName, int regionId, string country, string teamLogoUrl, object userState) {
+            if ((this.updateTeamDetailsOperationCompleted == null)) {
+                this.updateTeamDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateTeamDetailsOperationCompleted);
+            }
+            this.InvokeAsync("updateTeamDetails", new object[] {
+                        teamId,
+                        teamName,
+                        regionId,
+                        country,
+                        teamLogoUrl}, this.updateTeamDetailsOperationCompleted, userState);
+        }
+        
+        private void OnupdateTeamDetailsOperationCompleted(object arg) {
+            if ((this.updateTeamDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updateTeamDetailsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1449,6 +1492,10 @@ namespace ValView.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void deleteTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void updateTeamDetailsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

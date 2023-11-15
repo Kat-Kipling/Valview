@@ -71,8 +71,10 @@
     <Content Include="Admin\EditPlayer.aspx" />
     <Content Include="Admin\EditTeams.aspx" />
     <Content Include="css\styles.css" />
-    <Content Include="images\logo.png" />
+    <Content Include="images\teams\default_logo.png" />
     <Content Include="images\players\Default_Profile.png" />
+    <Content Include="images\players\demon1.jpg" />
+    <Content Include="images\players\tenz.jpg" />
     <Content Include="images\profile-pics\Default_Profile.png" />
     <Content Include="images\profile-pics\jinx-arcane.jpg" />
     <Content Include="images\tournaments\VCT_2023_Masters_Tokyo.png" />
@@ -220,9 +222,7 @@
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\teams\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WebReferenceUrl Include="https://localhost:44324/ValoViewAPI.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

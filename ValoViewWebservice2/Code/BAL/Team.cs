@@ -12,6 +12,7 @@ namespace ValoViewWebservice2.Code.BAL
         public string Name { get; set; }
         public string RegionID { get; set; }
         public string Country { get; set; }
+        public string TeamLogoUrl { get; set; }
         public List<string> Members = new List<string>(4);
 
         public Team(int id)
@@ -23,6 +24,7 @@ namespace ValoViewWebservice2.Code.BAL
             Name = teamDetails[1];
             RegionID = teamDetails[2];
             Country = teamDetails[3];
+            TeamLogoUrl = teamDetails[4];
 
             foreach(var member in members)
             {
@@ -32,11 +34,12 @@ namespace ValoViewWebservice2.Code.BAL
 
         public List<String> getDetails()
         {
-            List<String> info = new List<string>(9);
+            List<String> info = new List<string>(10);
             info.Add(Id.ToString());
             info.Add(Name);
             info.Add(RegionID); 
             info.Add(Country);
+            info.Add(TeamLogoUrl);
 
             foreach (string member in Members)
             {

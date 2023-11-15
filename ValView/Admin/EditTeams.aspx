@@ -7,9 +7,18 @@
             <div class="col-lg-5 mx-auto my-4">
                 <div class="login-card">
                     <div class="card">
-                        <img class="card-img-top rounded-circle profile-picture" alt="Blank avatar icon" src="../images/profile-pics/Default_Profile.png" />
+                        <asp:Image ID="imgTeamLogo" CssClass="card-img-top rounded-circle profile-picture" AlternateText="Team Logo Picture" ImageUrl="~/images/teams/default_logo.png" runat="server"/>
                         <h1 class="card-title">Team Information</h1>
                         <div class="card-body login-card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Logo: </label>
+                                        <div class="form-group">
+                                            <asp:FileUpload CssClass="form-control" ID="uplTeamLogo" runat="server" />
+                                        </div>
+                                    </div>
+                                </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Team ID</label>

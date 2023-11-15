@@ -61,6 +61,8 @@ namespace ValView.Admin
             txtTeamName.Text = teamDetails[1];
             txtTeamCountry.Text = teamDetails[2];
 
+            imgTeamLogo.ImageUrl = "~/" + teamDetails[4];
+
             drpRegion.ClearSelection();
             drpTeam1.ClearSelection();
             drpTeam2.ClearSelection();
@@ -70,45 +72,45 @@ namespace ValView.Admin
 
             drpRegion.Items.FindByText(teamDetails[3]).Selected = true;
             
-            if(!teamDetails[4].Equals("---EMPTY---"))
+            if(!teamDetails[5].Equals("---EMPTY---"))
             {
-                drpTeam1.Items.FindByText(teamDetails[4]).Selected = true;
+                drpTeam1.Items.FindByText(teamDetails[5]).Selected = true;
             }
             else
             {
                 drpTeam1.Items[1].Selected = true;
             }
 
-            if (!teamDetails[5].Equals("---EMPTY---"))
+            if (!teamDetails[6].Equals("---EMPTY---"))
             {
-                drpTeam2.Items.FindByText(teamDetails[5]).Selected = true;
+                drpTeam2.Items.FindByText(teamDetails[6]).Selected = true;
             }
             else
             {
                 drpTeam2.Items[1].Selected = true;
             }
 
-            if (!teamDetails[6].Equals("---EMPTY---"))
+            if (!teamDetails[7].Equals("---EMPTY---"))
             {
-                drpTeam3.Items.FindByText(teamDetails[6]).Selected = true;
+                drpTeam3.Items.FindByText(teamDetails[7]).Selected = true;
             }
             else
             {
                 drpTeam3.Items[1].Selected = true;
             }
 
-            if (!teamDetails[7].Equals("---EMPTY---"))
+            if (!teamDetails[8].Equals("---EMPTY---"))
             {
-                drpTeam4.Items.FindByText(teamDetails[7]).Selected = true;
+                drpTeam4.Items.FindByText(teamDetails[8]).Selected = true;
             }
             else
             {
                 drpTeam4.Items[1].Selected = true;
             }
 
-            if (!teamDetails[8].Equals("---EMPTY---"))
+            if (!teamDetails[9].Equals("---EMPTY---"))
             {
-                drpTeam5.Items.FindByText(teamDetails[8]).Selected = true;
+                drpTeam5.Items.FindByText(teamDetails[9]).Selected = true;
             }
             else
             {
@@ -127,7 +129,15 @@ namespace ValView.Admin
                     !String.IsNullOrEmpty(txtTeamName.Text) &&
                     !String.IsNullOrEmpty(txtTeamCountry.Text))
             {
-                valoViewAPI.addTeam(txtTeamName.Text, Convert.ToInt32(drpRegion.SelectedItem.Value), txtTeamCountry.Text);
+                string teamLogoUrl = "/images/teams/default_logo.png";
+
+                if (uplTeamLogo.HasFile)
+                {
+                    teamLogoUrl = "/images/teams/" + uplTeamLogo.FileName;
+                    uplTeamLogo.SaveAs(Server.MapPath("~") + teamLogoUrl);
+                }
+
+                valoViewAPI.addTeam(txtTeamName.Text, Convert.ToInt32(drpRegion.SelectedItem.Value), txtTeamCountry.Text, teamLogoUrl);
                 int teamId = valoViewAPI.getTeamIdByName(txtTeamName.Text);
 
                 if(Convert.ToInt32(drpTeam1.SelectedValue) != -1)
@@ -205,11 +215,11 @@ namespace ValView.Admin
 
                     int teamId = Convert.ToInt32(gvTeams.SelectedRow.Cells[0].Text);
                     List<String> oldTeamDetails = valoViewAPI.getTeamInfo(teamId).ToList();
-                    int oldTeam1Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[4]);
-                    int oldTeam2Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[5]);
-                    int oldTeam3Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[6]);
-                    int oldTeam4Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[7]);
-                    int oldTeam5Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[8]);
+                    int oldTeam1Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[5]);
+                    int oldTeam2Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[6]);
+                    int oldTeam3Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[7]);
+                    int oldTeam4Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[8]);
+                    int oldTeam5Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[9]);
 
                     int newTeamMem1Id = Convert.ToInt32(drpTeam1.SelectedItem.Value);
                     int newTeamMem2Id = Convert.ToInt32(drpTeam2.SelectedItem.Value);
@@ -248,22 +258,26 @@ namespace ValView.Admin
                     valoViewAPI.addPlayerToTeam(newTeamMem4Id, Convert.ToInt32(txtTeamID.Text));
                     valoViewAPI.addPlayerToTeam(newTeamMem5Id, Convert.ToInt32(txtTeamID.Text));
 
+                string teamName = txtTeamName.Text;
+                int regionId = Convert.ToInt32(drpRegion.SelectedItem.Value);
+                string country = txtTeamCountry.Text;
+                string teamLogoUrl = oldTeamDetails[4];
 
-                txtTeamID.Text = string.Empty;
-                txtTeamName.Text = string.Empty;
-                txtTeamCountry.Text = string.Empty;
+                if (uplTeamLogo.HasFile)
+                {
+                    teamLogoUrl = "/images/teams/" + uplTeamLogo.FileName;
+                    uplTeamLogo.SaveAs(Server.MapPath("~") + teamLogoUrl);
+                }
 
-                drpRegion.ClearSelection();
-                drpTeam1.ClearSelection();
-                drpTeam2.ClearSelection();
-                drpTeam3.ClearSelection();
-                drpTeam4.ClearSelection();
-                drpTeam5.ClearSelection();
+                valoViewAPI.updateTeamDetails(teamId, teamName, regionId, country, teamLogoUrl);
+
+                btnClear_Click(sender, e);
 
                 lblOutput.Text = "Team updated!";
-                    DataSet teams = valoViewAPI.getTeams();
-                    gvTeams.DataSource = teams.Tables["dtTeams"];
-                    gvTeams.DataBind();
+                imgTeamLogo.ImageUrl = teamLogoUrl;
+                DataSet teams = valoViewAPI.getTeams();
+                gvTeams.DataSource = teams.Tables["dtTeams"];
+                gvTeams.DataBind();
                 }
                 else
                 {

@@ -15,6 +15,24 @@ namespace ValView.Admin
     {
 
         /// <summary>
+        /// imgTeamLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgTeamLogo;
+
+        /// <summary>
+        /// uplTeamLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload uplTeamLogo;
+
+        /// <summary>
         /// txtTeamID control.
         /// </summary>
         /// <remarks>

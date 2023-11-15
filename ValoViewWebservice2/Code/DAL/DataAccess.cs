@@ -35,7 +35,7 @@ namespace ValoViewWebservice.App_Code.DAL
             DataSet ds = new DataSet();
 
             OleDbConnection conn = openConnection();
-            string sqlCmd = "SELECT tblTeams.[Team ID], tblTeams.[Team Name], tblTeams.Country, tblRegions.[Region Name] " +
+            string sqlCmd = "SELECT tblTeams.[Team ID], tblTeams.[Team Name], tblTeams.Country, tblRegions.[Region Name], tblTeams.[Picture URL] " +
                 "FROM tblTeams " +
                 "INNER JOIN tblRegions ON tblTeams.[Region ID] = tblRegions.[Region ID];";
 
@@ -265,7 +265,7 @@ namespace ValoViewWebservice.App_Code.DAL
         public static List<String> getTeamInfo(int id)
         {
             OleDbConnection conn = openConnection();
-            string sqlStr = "SELECT tblTeams.[Team ID], tblTeams.[Team Name], tblTeams.Country, tblRegions.[Region Name] " +
+            string sqlStr = "SELECT tblTeams.[Team ID], tblTeams.[Team Name], tblTeams.Country, tblRegions.[Region Name], tblTeams.[Picture URL] " +
                 "FROM tblTeams " +
                 "INNER JOIN tblRegions ON tblTeams.[Region ID] = tblRegions.[Region ID]" +
                 "WHERE tblTeams.[Team ID] = " + id + ";";
@@ -273,13 +273,14 @@ namespace ValoViewWebservice.App_Code.DAL
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
-            List<string> teamInfo = new List<string>(4);
+            List<string> teamInfo = new List<string>(5);
             while (reader.Read())
             {
                 teamInfo.Add(reader.GetValue(0).ToString());
                 teamInfo.Add(reader.GetString(1));
                 teamInfo.Add(reader.GetString(2));
                 teamInfo.Add(reader.GetString(3));
+                teamInfo.Add(reader.GetString(4));
             }
             reader.Close();
             conn.Close();
@@ -436,13 +437,14 @@ namespace ValoViewWebservice.App_Code.DAL
             return id;
         }
 
-        public static void addEmptyTeam(string teamName, int regionId, string country)
+        public static void addEmptyTeam(string teamName, int regionId, string country, string teamLogo)
         {
             OleDbConnection conn = openConnection();
-            string sqlStr = "INSERT INTO tblTeams ([Team Name], [Region ID], Country) " +
+            string sqlStr = "INSERT INTO tblTeams ([Team Name], [Region ID], Country, [Picture URL]) " +
                                     "VALUES ('" + teamName + "', " +
                                     "" + regionId + ", " +
-                                    "'" + country + "')";
+                                    "'" + country + ", " +
+                                    "'" + teamLogo + "');";
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
             OleDbDataReader reader = cmd.ExecuteReader();
@@ -604,6 +606,23 @@ namespace ValoViewWebservice.App_Code.DAL
                                     mainAgent + ", " +
                                     "'" + imageUrl + "');";
             }
+
+            OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
+        }
+
+        public static void updateTeamDetails(int teamId, string teamName, int regionId, string country, string teamLogoUrl)
+        {
+            OleDbConnection conn = openConnection();
+            string sqlStr = "UPDATE tblTeams " +
+                "SET [Team Name] = '" + teamName + "', " +
+                "[Region ID] = " + regionId + ", " +
+                "Country = '" + country + "', " +
+                "[Picture URL] = '" + teamLogoUrl + "' " +
+                "WHERE [Team ID] = " + teamId + ";";
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
             OleDbDataReader reader = cmd.ExecuteReader();

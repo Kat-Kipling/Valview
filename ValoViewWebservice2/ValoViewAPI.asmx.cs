@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Web.Services;
 using ValoViewWebservice.App_Code.BAL;
 using ValoViewWebservice.App_Code.DAL;
@@ -163,9 +164,9 @@ namespace ValoViewWebservice
         }
 
         [WebMethod]
-        public void addTeam(string teamName, int regionId, string country)
+        public void addTeam(string teamName, int regionId, string country, string teamLogo)
         {
-            DataAccess.addEmptyTeam(teamName, regionId, country);
+            DataAccess.addEmptyTeam(teamName, regionId, country, teamLogo);
         }
 
         [WebMethod]
@@ -178,6 +179,12 @@ namespace ValoViewWebservice
         public void deleteTeam(int id)
         {
             DataAccess.deleteTeam(id);
+        }
+
+        [WebMethod]
+        public void updateTeamDetails(int teamId, string teamName, int regionId, string country, string teamLogoUrl)
+        {
+            DataAccess.updateTeamDetails(teamId, teamName, regionId, country, teamLogoUrl);
         }
     }
 }
