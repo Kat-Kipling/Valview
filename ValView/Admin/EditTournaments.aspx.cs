@@ -24,6 +24,16 @@ namespace ValView.Admin
 
         protected void gvTournaments_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int id = Convert.ToInt32(gvTournaments.SelectedRow.Cells[0].Text);
+            List<string> tournamentDetails = api.getTournamentInfo(gvTournaments.SelectedRow.Cells[1].Text).ToList();
+
+            string tournamentName = tournamentDetails[1];
+            string description = tournamentDetails[4];
+            string tournamentLogoUrl = tournamentDetails[5];
+
+            txtTournamentID.Text = id.ToString();
+            txtTeamName.Text = tournamentName;
+            txtDescription.Text = description;
 
         }
     }
