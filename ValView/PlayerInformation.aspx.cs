@@ -27,6 +27,7 @@ namespace ValView
                 lblMainRole.Text += playerDetails[6];
                 lblSecRole.Text += playerDetails[7];
                 lblMainAgent.Text += playerDetails[8];
+                imgPlayerPicture.ImageUrl = "~/" + playerDetails[9];
             }
         }
     }

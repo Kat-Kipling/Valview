@@ -244,7 +244,7 @@ namespace ValoViewWebservice.App_Code.DAL
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
             OleDbDataReader reader = cmd.ExecuteReader();
 
-            List<string> playerInfo = new List<string>(9);
+            List<string> playerInfo = new List<string>(10);
             while (reader.Read())
             {
                 playerInfo.Add(reader.GetValue(0).ToString());
@@ -256,6 +256,7 @@ namespace ValoViewWebservice.App_Code.DAL
                 playerInfo.Add(reader.GetString(6));
                 playerInfo.Add(reader.GetString(7));
                 playerInfo.Add(reader.GetString(8));
+                playerInfo.Add(reader.GetString(9));
             }
             reader.Close();
             conn.Close();
@@ -464,7 +465,7 @@ namespace ValoViewWebservice.App_Code.DAL
             conn.Close();
         }
 
-        public static void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        public static void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl)
         {
             OleDbConnection conn = openConnection();
             string sqlStr = "";
@@ -478,7 +479,8 @@ namespace ValoViewWebservice.App_Code.DAL
                 "Division = NULL, " +
                 "[Main Role] = " + mainRole + ", " +
                 "[Secondary Role] = " + secRole + ", " +
-                "[Main Agent] = " + mainAgent + " " +
+                "[Main Agent] = " + mainAgent + ", " +
+                "[Picture URL] = '" + imageUrl + "' " +
                 "WHERE tblPlayers.[ID] = " + id + ";";
             }
             else if (division != -1 && secRole == -1) // Has a division, doesn't have a secondary role
@@ -491,7 +493,8 @@ namespace ValoViewWebservice.App_Code.DAL
                 "Division = " + division + ", " +
                 "[Main Role] = " + mainRole + ", " +
                 "[Secondary Role] = NULL, " +
-                "[Main Agent] = " + mainAgent + " " +
+                "[Main Agent] = " + mainAgent + ", " +
+                "[Picture URL] = '" + imageUrl + "' " +
                 "WHERE tblPlayers.[ID] = " + id + ";";
             }
             else if (division == -1 && secRole == -1) // Has neither a division, or a secondary role
@@ -504,7 +507,8 @@ namespace ValoViewWebservice.App_Code.DAL
                 "Division = NULL, " +
                 "[Main Role] = " + mainRole + ", " +
                 "[Secondary Role] = NULL, " +
-                "[Main Agent] = " + mainAgent + " " +
+                "[Main Agent] = " + mainAgent + ", " +
+                "[Picture URL] = '" + imageUrl + "' " +
                 "WHERE tblPlayers.[ID] = " + id + ";";
             }
             else // Has both a division, and a secondary role
@@ -517,7 +521,8 @@ namespace ValoViewWebservice.App_Code.DAL
                 "Division = " + division + ", " +
                 "[Main Role] = " + mainRole + ", " +
                 "[Secondary Role] = " + secRole + ", " +
-                "[Main Agent] = " + mainAgent + " " +
+                "[Main Agent] = " + mainAgent + ", " +
+                "[Picture URL] = '" + imageUrl + "' " +
                 "WHERE tblPlayers.[ID] = " + id + ";";
             }
 
@@ -541,7 +546,7 @@ namespace ValoViewWebservice.App_Code.DAL
             return regions;
         }
 
-        public static void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        public static void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl)
         {
             OleDbConnection conn = openConnection();
             string sqlStr = "";
@@ -557,7 +562,8 @@ namespace ValoViewWebservice.App_Code.DAL
                                     "NULL, " +
                                     mainRole + ", " +
                                     secRole + ", " +
-                                    mainAgent + ");";
+                                    mainAgent + ", " +
+                                    "'" + imageUrl + "');";
             }
             else if(division != -1 && secRole == -1) // Has a division, doesn't have a secondary role
             {
@@ -569,7 +575,8 @@ namespace ValoViewWebservice.App_Code.DAL
                                     division + ", " +
                                     mainRole + ", " +
                                     "NULL, " +
-                                    mainAgent + ");";
+                                    mainAgent + ", " +
+                                    "'" + imageUrl + "');";
             }
             else if(division == -1 && secRole == -1) // Has neither a division, or a secondary role
             {
@@ -581,7 +588,8 @@ namespace ValoViewWebservice.App_Code.DAL
                                     "NULL, " +
                                     mainRole + ", " +
                                     "NULL, " +
-                                    mainAgent + ");";
+                                    mainAgent + ", " +
+                                    "'" + imageUrl + "');";
             }
             else // Has both a division, and a secondary role
             {
@@ -593,7 +601,8 @@ namespace ValoViewWebservice.App_Code.DAL
                                     division + ", " +
                                     mainRole + ", " +
                                     secRole + ", " +
-                                    mainAgent + ");";
+                                    mainAgent + ", " +
+                                    "'" + imageUrl + "');";
             }
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);

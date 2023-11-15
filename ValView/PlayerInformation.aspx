@@ -6,7 +6,7 @@
         <div class="col-md-6 col-sm-12 mx-auto my-4">
             <div class="login-card">
                 <div class="card">
-                    <img class="card-img-top rounded-circle profile-picture" alt="Blank avatar icon" src="images/profile-pics/Default_Profile.png" />
+                    <asp:Image ID="imgPlayerPicture" CssClass="card-img-top rounded-circle profile-picture" AlternateText="Player Profile Picture" ImageUrl="~/images/players/Default_Profile.png" runat="server"/>
                     <h1 class="card-title">Player Information</h1>
                     <div class="card-body login-card-body">
                         <div class="row">

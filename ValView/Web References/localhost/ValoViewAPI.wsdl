@@ -257,6 +257,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="mainRole" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="secRole" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="mainAgent" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageUrl" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -274,6 +275,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="mainRole" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="secRole" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="mainAgent" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageUrl" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>

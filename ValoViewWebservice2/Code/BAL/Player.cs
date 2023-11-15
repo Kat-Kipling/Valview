@@ -19,6 +19,7 @@ namespace ValoViewWebservice.App_Code.BAL
         public string mainRole { get; set; }
         public string secondaryRole { get; set; }
         public string mainAgent { get; set; }
+        public string pictureUrl { get; set; }
 
         public Player(int id)
         {
@@ -32,6 +33,7 @@ namespace ValoViewWebservice.App_Code.BAL
             mainRole = details[6];
             secondaryRole = details[7];
             mainAgent = details[8];
+            pictureUrl= details[9];
         }
 
         public static DataSet getAllPlayers()
@@ -51,6 +53,7 @@ namespace ValoViewWebservice.App_Code.BAL
             details.Add(mainRole);
             details.Add(secondaryRole);
             details.Add(mainAgent);
+            details.Add(pictureUrl);
             return details;
         }
     }

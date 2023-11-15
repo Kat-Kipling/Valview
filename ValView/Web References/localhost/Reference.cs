@@ -24,7 +24,7 @@ namespace ValView.localhost {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="ValoViewAPISoap", Namespace="http://tempuri.org/")]
@@ -615,7 +615,7 @@ namespace ValView.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/editPlayer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
+        public void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl) {
             this.Invoke("editPlayer", new object[] {
                         id,
                         name,
@@ -625,16 +625,17 @@ namespace ValView.localhost {
                         division,
                         mainRole,
                         secRole,
-                        mainAgent});
+                        mainAgent,
+                        imageUrl});
         }
         
         /// <remarks/>
-        public void editPlayerAsync(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
-            this.editPlayerAsync(id, name, team, country, rank, division, mainRole, secRole, mainAgent, null);
+        public void editPlayerAsync(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl) {
+            this.editPlayerAsync(id, name, team, country, rank, division, mainRole, secRole, mainAgent, imageUrl, null);
         }
         
         /// <remarks/>
-        public void editPlayerAsync(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, object userState) {
+        public void editPlayerAsync(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl, object userState) {
             if ((this.editPlayerOperationCompleted == null)) {
                 this.editPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OneditPlayerOperationCompleted);
             }
@@ -647,7 +648,8 @@ namespace ValView.localhost {
                         division,
                         mainRole,
                         secRole,
-                        mainAgent}, this.editPlayerOperationCompleted, userState);
+                        mainAgent,
+                        imageUrl}, this.editPlayerOperationCompleted, userState);
         }
         
         private void OneditPlayerOperationCompleted(object arg) {
@@ -659,7 +661,7 @@ namespace ValView.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addNewPlayer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
+        public void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl) {
             this.Invoke("addNewPlayer", new object[] {
                         name,
                         team,
@@ -668,16 +670,17 @@ namespace ValView.localhost {
                         division,
                         mainRole,
                         secRole,
-                        mainAgent});
+                        mainAgent,
+                        imageUrl});
         }
         
         /// <remarks/>
-        public void addNewPlayerAsync(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent) {
-            this.addNewPlayerAsync(name, team, country, rank, division, mainRole, secRole, mainAgent, null);
+        public void addNewPlayerAsync(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl) {
+            this.addNewPlayerAsync(name, team, country, rank, division, mainRole, secRole, mainAgent, imageUrl, null);
         }
         
         /// <remarks/>
-        public void addNewPlayerAsync(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, object userState) {
+        public void addNewPlayerAsync(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl, object userState) {
             if ((this.addNewPlayerOperationCompleted == null)) {
                 this.addNewPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddNewPlayerOperationCompleted);
             }
@@ -689,7 +692,8 @@ namespace ValView.localhost {
                         division,
                         mainRole,
                         secRole,
-                        mainAgent}, this.addNewPlayerOperationCompleted, userState);
+                        mainAgent,
+                        imageUrl}, this.addNewPlayerOperationCompleted, userState);
         }
         
         private void OnaddNewPlayerOperationCompleted(object arg) {
@@ -951,11 +955,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getTournamentSeriesByNameCompletedEventHandler(object sender, getTournamentSeriesByNameCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getTournamentSeriesByNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -977,11 +981,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getAllTournamentsCompletedEventHandler(object sender, getAllTournamentsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getAllTournamentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1003,11 +1007,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getTournamentIdCompletedEventHandler(object sender, getTournamentIdCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getTournamentIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1029,11 +1033,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void attemptSignInCompletedEventHandler(object sender, attemptSignInCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class attemptSignInCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1055,11 +1059,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getUserDetailsCompletedEventHandler(object sender, getUserDetailsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1081,11 +1085,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getAllPlayersCompletedEventHandler(object sender, getAllPlayersCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getAllPlayersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1107,11 +1111,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getPlayerDetailsCompletedEventHandler(object sender, getPlayerDetailsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getPlayerDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1133,11 +1137,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getPlayerIdByNameCompletedEventHandler(object sender, getPlayerIdByNameCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getPlayerIdByNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1159,11 +1163,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getAllPlayerInfoCompletedEventHandler(object sender, getAllPlayerInfoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getAllPlayerInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1185,11 +1189,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getRanksCompletedEventHandler(object sender, getRanksCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getRanksCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1211,11 +1215,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getTeamsCompletedEventHandler(object sender, getTeamsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getTeamsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1237,11 +1241,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getDivisionsCompletedEventHandler(object sender, getDivisionsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDivisionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1263,11 +1267,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getAgentsCompletedEventHandler(object sender, getAgentsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getAgentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1289,11 +1293,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getRolesCompletedEventHandler(object sender, getRolesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getRolesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1315,23 +1319,23 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void deletePlayerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void editPlayerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void addNewPlayerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getTeamInfoCompletedEventHandler(object sender, getTeamInfoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getTeamInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1353,11 +1357,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getTeamDataCompletedEventHandler(object sender, getTeamDataCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getTeamDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1379,11 +1383,11 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getRegionsCompletedEventHandler(object sender, getRegionsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getRegionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1405,23 +1409,23 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void removePlayerFromTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void addPlayerToTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void addTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void getTeamIdByNameCompletedEventHandler(object sender, getTeamIdByNameCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getTeamIdByNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1443,7 +1447,7 @@ namespace ValView.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void deleteTeamCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 

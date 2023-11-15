@@ -120,15 +120,15 @@ namespace ValoViewWebservice
         }
 
         [WebMethod]
-        public void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        public void editPlayer(int id, string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl)
         {
-            DataAccess.editPlayer(id, name, team, country, rank, division, mainRole, secRole, mainAgent);
+            DataAccess.editPlayer(id, name, team, country, rank, division, mainRole, secRole, mainAgent, imageUrl);
         }
 
         [WebMethod]
-        public void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent)
+        public void addNewPlayer(string name, int team, string country, int rank, int division, int mainRole, int secRole, int mainAgent, string imageUrl)
         {
-            DataAccess.addNewPlayer(name, team, country, rank, division, mainRole, secRole, mainAgent);
+            DataAccess.addNewPlayer(name, team, country, rank, division, mainRole, secRole, mainAgent, imageUrl);
         }
 
         [WebMethod]

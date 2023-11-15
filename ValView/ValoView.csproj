@@ -72,6 +72,7 @@
     <Content Include="Admin\EditTeams.aspx" />
     <Content Include="css\styles.css" />
     <Content Include="images\logo.png" />
+    <Content Include="images\players\Default_Profile.png" />
     <Content Include="images\profile-pics\Default_Profile.png" />
     <Content Include="images\profile-pics\jinx-arcane.jpg" />
     <Content Include="images\tournaments\VCT_2023_Masters_Tokyo.png" />

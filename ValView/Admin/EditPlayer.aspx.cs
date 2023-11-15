@@ -70,7 +70,7 @@ namespace ValView.Admin
             List<String> playerDetails = api.getPlayerDetails(id).ToList();
             txtPlayerID.Text = playerDetails[0];
             txtPlayerName.Text = playerDetails[1];
-
+            imgPlayerPicture.ImageUrl = "~/" + playerDetails[9];
             drpDiv.ClearSelection();
             drpAgent.ClearSelection();
             drpMainRole.ClearSelection();
@@ -128,8 +128,15 @@ namespace ValView.Admin
                 int rankValue = Convert.ToInt32(drpRank.SelectedItem.Value);
                 int dropDivValue = Convert.ToInt32(drpDiv.SelectedItem.Value);
                 int dropSecRoleValue = Convert.ToInt32((drpSecRole.SelectedItem.Value));
+                string imageUrl = "/images/players/Default_Profile.png";
 
-                valoViewAPI.addNewPlayer(name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue);
+                if (uplPlayerImage.HasFile)
+                {
+                    imageUrl = "/images/players/" + uplPlayerImage.FileName;
+                    uplPlayerImage.SaveAs(Server.MapPath("~") + imageUrl);
+                }
+
+                valoViewAPI.addNewPlayer(name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue, imageUrl);
                 lblOutput.Text = "Player added!";
                 DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
                 gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
@@ -167,6 +174,8 @@ namespace ValView.Admin
             {
                 ValoViewAPI valoViewAPI = new ValoViewAPI();
                 int id = Convert.ToInt32(txtPlayerID.Text);
+                List<String> playerDetails = valoViewAPI.getPlayerDetails(id).ToList();
+                string imageUrl = playerDetails[9];
                 string name = txtPlayerName.Text;
                 string country = txtPlayerCountry.Text;
                 int agentValue = Convert.ToInt32(drpAgent.SelectedItem.Value);
@@ -176,8 +185,13 @@ namespace ValView.Admin
                 int dropDivValue = Convert.ToInt32(drpDiv.SelectedItem.Value);
                 int dropSecRoleValue = Convert.ToInt32((drpSecRole.SelectedItem.Value));
 
-                Debug.Write(" " + id + name + country + agentValue + mainRoleValue + teamValue + rankValue + dropDivValue + dropSecRoleValue);
-                valoViewAPI.editPlayer(id, name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue);
+                if(uplPlayerImage.HasFile)
+                {
+                    imageUrl = "/images/players/" + uplPlayerImage.FileName;
+                    uplPlayerImage.SaveAs(Server.MapPath("~") + imageUrl);
+                }
+
+                valoViewAPI.editPlayer(id, name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue, imageUrl);
                 lblOutput.Text = "Player edited!";
                 DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
                 gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
