@@ -70,6 +70,7 @@
     <Content Include="Admin\Account.aspx" />
     <Content Include="Admin\EditPlayer.aspx" />
     <Content Include="Admin\EditTeams.aspx" />
+    <Content Include="Admin\EditTournaments.aspx" />
     <Content Include="css\styles.css" />
     <Content Include="images\teams\default_logo.png" />
     <Content Include="images\players\Default_Profile.png" />
@@ -77,6 +78,7 @@
     <Content Include="images\players\tenz.jpg" />
     <Content Include="images\profile-pics\Default_Profile.png" />
     <Content Include="images\profile-pics\jinx-arcane.jpg" />
+    <Content Include="images\tournaments\Default_Banner.jpg" />
     <Content Include="images\tournaments\VCT_2023_Masters_Tokyo.png" />
     <Content Include="images\tournaments\VCT_Champions_2023.png" />
     <Content Include="js\javascript.js" />
@@ -122,6 +124,13 @@
     </Compile>
     <Compile Include="Admin\EditTeams.aspx.designer.cs">
       <DependentUpon>EditTeams.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EditTournaments.aspx.cs">
+      <DependentUpon>EditTournaments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EditTournaments.aspx.designer.cs">
+      <DependentUpon>EditTournaments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

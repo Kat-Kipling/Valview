@@ -82,6 +82,8 @@ namespace ValView.localhost {
         
         private System.Threading.SendOrPostCallback updateTeamDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTournamentInfoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -197,6 +199,9 @@ namespace ValView.localhost {
         
         /// <remarks/>
         public event updateTeamDetailsCompletedEventHandler updateTeamDetailsCompleted;
+        
+        /// <remarks/>
+        public event getTournamentInfoCompletedEventHandler getTournamentInfoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentSeriesByName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -979,6 +984,35 @@ namespace ValView.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTournamentInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] getTournamentInfo(string name) {
+            object[] results = this.Invoke("getTournamentInfo", new object[] {
+                        name});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTournamentInfoAsync(string name) {
+            this.getTournamentInfoAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void getTournamentInfoAsync(string name, object userState) {
+            if ((this.getTournamentInfoOperationCompleted == null)) {
+                this.getTournamentInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTournamentInfoOperationCompleted);
+            }
+            this.InvokeAsync("getTournamentInfo", new object[] {
+                        name}, this.getTournamentInfoOperationCompleted, userState);
+        }
+        
+        private void OngetTournamentInfoOperationCompleted(object arg) {
+            if ((this.getTournamentInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTournamentInfoCompleted(this, new getTournamentInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1496,6 +1530,32 @@ namespace ValView.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void updateTeamDetailsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getTournamentInfoCompletedEventHandler(object sender, getTournamentInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTournamentInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTournamentInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

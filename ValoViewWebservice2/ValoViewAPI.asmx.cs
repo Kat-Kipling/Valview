@@ -186,5 +186,12 @@ namespace ValoViewWebservice
         {
             DataAccess.updateTeamDetails(teamId, teamName, regionId, country, teamLogoUrl);
         }
+
+        [WebMethod]
+        public List<string> getTournamentInfo(string name)
+        {
+            Tournament tournament = new Tournament(name);
+            return tournament.getInfo();
+        }
     }
 }

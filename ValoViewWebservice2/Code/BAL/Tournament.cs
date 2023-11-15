@@ -37,6 +37,19 @@ namespace ValoViewWebservice.App_Code.BAL
         {
             return DataAccess.getTournamentMatches(name);
         }
+
+        public List<String> getInfo()
+        {
+            List<String> info = new List<String>(6);
+            info.Add(id.ToString());
+            info.Add(name);
+            info.Add(startDate);
+            info.Add(endDate);
+            info.Add(description);
+            info.Add(logoUrl);
+
+            return info;
+        }
     }
 
 

@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="col">
-
+                    <asp:Button ID="btnTournamentManagement" runat="server" Text="Tournament Management" CssClass="btn btn-primary btn-block btn-lg" OnClick="btnTournamentManagement_Click"/>
                 </div>
             </div>
         </div>
