@@ -567,7 +567,7 @@ namespace ValoViewWebservice.App_Code.DAL
             }
             else if(division != -1 && secRole == -1) // Has a division, doesn't have a secondary role
             {
-                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent], [Picture URL]) " +
                                     "VALUES ('" + name + "', " +
                                     team + ", " +
                                     "'" + country + "', " +
@@ -580,7 +580,7 @@ namespace ValoViewWebservice.App_Code.DAL
             }
             else if(division == -1 && secRole == -1) // Has neither a division, or a secondary role
             {
-                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent], [Picture URL]) " +
                                     "VALUES ('" + name + "', " +
                                     team + ", " +
                                     "'" + country + "', " +
@@ -593,7 +593,7 @@ namespace ValoViewWebservice.App_Code.DAL
             }
             else // Has both a division, and a secondary role
             {
-                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent]) " +
+                sqlStr = "INSERT INTO tblPlayers (Username, Team, Country, Rank, Division, [Main Role], [Secondary Role], [Main Agent], [Picture URL]) " +
                                     "VALUES ('" + name + "', " +
                                     team + ", " +
                                     "'" + country + "', " +

@@ -192,6 +192,7 @@ namespace ValView.Admin
                 }
 
                 valoViewAPI.editPlayer(id, name, teamValue, country, rankValue, dropDivValue, mainRoleValue, dropSecRoleValue, agentValue, imageUrl);
+                imgPlayerPicture.ImageUrl = imageUrl;
                 lblOutput.Text = "Player edited!";
                 DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
                 gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
