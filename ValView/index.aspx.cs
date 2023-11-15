@@ -74,7 +74,7 @@ namespace ValView
 
         protected void lbtnLogOut_Click(object sender, EventArgs e)
         {
-            FormsAuthentication.SignOut();
+        FormsAuthentication.SignOut();
         //Show login link
         lbtnLogin.Visible = true;
         //And links to see teams, players and tournaments

@@ -10,6 +10,7 @@
                         <asp:Image ID="imgTournamentLogo" CssClass="card-img-top" AlternateText="Tournament Banner Picture" ImageUrl="~/images/tournaments/Default_Banner.jpg" runat="server"/>
                         <h1 class="card-title">Tournament Information</h1>
                         <div class="card-body login-card-body">
+                            <div class="row">
                                 <div class="row">
                                     <div class="col">
                                         <label>Image: </label>
@@ -53,13 +54,13 @@
                                 </div>
 
                              <div class="row">
-                                    <div class="col">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <asp:Button class="btn btn-info btn-lg" ID="btnAdd" runat="server" Text="Add New Tournament" OnClick="btnAdd_Click"/>
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <asp:Button class="btn btn-warning btn-lg" ID="btnClear" runat="server" Text="Clear Form" OnClick="btnClear_Click"/>
                                         </div>
@@ -67,35 +68,36 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <asp:Button class="btn btn-primary btn-lg" ID="btnUpdate" runat="server" Text="Update Details" OnClick="btnUpdate_Click"/>
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <asp:Button class="btn btn-danger btn-lg" ID="btnDelete" runat="server" Text="Delete Tournament" OnClick="btnDelete_Click"/>
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 mx-auto my-4 table-responsive">
-                <asp:GridView ID="gvTournaments" CssClass="table table-bordered table-hover table-sm table-dark" AutoGenerateColumns="false" runat="server" OnSelectedIndexChanged="gvTournaments_SelectedIndexChanged">
-                    <Columns>
-                        <asp:BoundField DataField="Tournament ID" HeaderText="ID"/>
-                        <asp:BoundField DataField="Tournament Name" HeaderText="Name"/>
-                        <asp:BoundField DataField="Start Date" HeaderText="Start Date"/>
-                        <asp:BoundField DataField="End Date" HeaderText="End Date"/>
-                        <asp:BoundField DataField="Description" HeaderText="Description"/>
-                        <asp:ButtonField CommandName="Select" Text="Select" />
-                    </Columns>
-                </asp:GridView>
+                <div class="col-md-6 mx-auto my-4 table-responsive">
+                    <asp:GridView ID="gvTournaments" CssClass="table table-bordered table-hover table-sm table-dark" AutoGenerateColumns="false" runat="server" OnSelectedIndexChanged="gvTournaments_SelectedIndexChanged">
+                        <Columns>
+                            <asp:BoundField DataField="Tournament ID" HeaderText="ID"/>
+                            <asp:BoundField DataField="Tournament Name" HeaderText="Name"/>
+                            <asp:BoundField DataField="Start Date" HeaderText="Start Date"/>
+                            <asp:BoundField DataField="End Date" HeaderText="End Date"/>
+                            <asp:BoundField DataField="Description" HeaderText="Description"/>
+                            <asp:ButtonField CommandName="Select" Text="Select" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
             </div>
         </div>
 </asp:Content>

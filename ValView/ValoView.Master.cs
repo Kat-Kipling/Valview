@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -83,6 +84,9 @@ namespace ValView
             //but don't show logout option, or user profile option.
             lbtnLogOut.Visible = false;
             lbtnUserProfile.Visible = false;
+
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/index.aspx", true);
         }
     }
 }
