@@ -6,6 +6,7 @@
         <asp:Repeater ID="reptPlayers" OnItemCommand="reptPlayers_ItemCommand" runat="server">
             <ItemTemplate>
                 <div class="card tournament-card">
+                    <asp:Image runat="server" ID="imgTeamLogo" ImageUrl='<%# Eval("Picture URL") %>' class="card-img-top"></asp:Image>
                     <div class="card-body">
                         <asp:HiddenField runat="server" ID="playerID" Value='<%#Eval("ID") %>'/>
                         <h1 class="card-title"><asp:Label runat="server" ID="lblName" Text='<%# Eval("Username") %>'></asp:Label></h1>

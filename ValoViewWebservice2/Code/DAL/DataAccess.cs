@@ -217,7 +217,7 @@ namespace ValoViewWebservice.App_Code.DAL
             DataSet ds = new DataSet();
 
             OleDbConnection conn = openConnection();
-            string sqlStr = "SELECT tblPlayers.[ID], tblPlayers.[Username], tblTeams.[Team Name] " +
+            string sqlStr = "SELECT tblPlayers.[ID], tblPlayers.[Username], tblTeams.[Team Name], tblPlayers.[Picture URL] " +
                 "FROM(tblPlayers " +
                 "INNER JOIN tblTeams ON tblPlayers.Team = tblTeams.[Team ID])";
 
