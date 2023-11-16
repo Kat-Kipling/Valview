@@ -159,6 +159,7 @@ namespace ValView.Admin
             txtPlayerID.Text = string.Empty;
             txtPlayerName.Text = string.Empty;
             txtPlayerCountry.Text = string.Empty;
+            imgPlayerPicture.ImageUrl = "/images/players/Default_Profile.png";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -197,6 +198,7 @@ namespace ValView.Admin
                 DataSet allPlayers = valoViewAPI.getAllPlayerInfo();
                 gvPlayers.DataSource = allPlayers.Tables["dtPlayers"];
                 gvPlayers.DataBind();
+                imgPlayerPicture.ImageUrl = imageUrl;
             }
             else
             {
