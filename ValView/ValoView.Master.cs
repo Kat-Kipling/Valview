@@ -85,6 +85,7 @@ namespace ValView
             lbtnLogOut.Visible = false;
             lbtnUserProfile.Visible = false;
 
+            Session["username"] = null;
             FormsAuthentication.SignOut();
             Response.Redirect("~/index.aspx", true);
         }

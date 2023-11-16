@@ -84,6 +84,8 @@ namespace ValView
         //but don't show logout option, or user profile option.
         lbtnLogOut.Visible = false;
         lbtnUserProfile.Visible = false;
+
+        Session["username"] = null;
         }
     }
 }
