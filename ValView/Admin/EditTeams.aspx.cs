@@ -199,6 +199,7 @@ namespace ValView.Admin
             drpTeam3.ClearSelection();
             drpTeam4.ClearSelection();
             drpTeam5.ClearSelection();
+            imgTeamLogo.ImageUrl = "/images/teams/default_logo.png";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
