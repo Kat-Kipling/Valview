@@ -379,8 +379,8 @@ namespace ValoViewWebservice.App_Code.DAL
         {
             OleDbConnection conn = openConnection();
             string sqlStr = "DELETE * " +
-                "FROM tblTeam " +
-                "WHERE tblTeam.[Team ID] = " + id + ";";
+                "FROM tblTeams " +
+                "WHERE tblTeams.[Team ID] = " + id + ";";
 
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);
@@ -443,7 +443,7 @@ namespace ValoViewWebservice.App_Code.DAL
             string sqlStr = "INSERT INTO tblTeams ([Team Name], [Region ID], Country, [Picture URL]) " +
                                     "VALUES ('" + teamName + "', " +
                                     "" + regionId + ", " +
-                                    "'" + country + ", " +
+                                    "'" + country + "', " +
                                     "'" + teamLogo + "');";
 
             OleDbCommand cmd = new OleDbCommand(sqlStr, conn);

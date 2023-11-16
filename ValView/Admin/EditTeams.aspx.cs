@@ -291,6 +291,20 @@ namespace ValView.Admin
             if (!String.IsNullOrEmpty(txtTeamID.Text))
             {
                 ValoViewAPI valoViewAPI = new ValoViewAPI();
+
+                List<String> oldTeamDetails = valoViewAPI.getTeamInfo(Convert.ToInt32(txtTeamID.Text)).ToList();
+                int oldTeam1Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[5]);
+                int oldTeam2Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[6]);
+                int oldTeam3Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[7]);
+                int oldTeam4Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[8]);
+                int oldTeam5Id = valoViewAPI.getPlayerIdByName(oldTeamDetails[9]);
+
+                valoViewAPI.removePlayerFromTeam(oldTeam1Id);
+                valoViewAPI.removePlayerFromTeam(oldTeam2Id);
+                valoViewAPI.removePlayerFromTeam(oldTeam3Id);
+                valoViewAPI.removePlayerFromTeam(oldTeam4Id);
+                valoViewAPI.removePlayerFromTeam(oldTeam5Id);
+
                 valoViewAPI.deleteTeam(Convert.ToInt32(txtTeamID.Text));
                 btnClear_Click(sender, e);
                 lblOutput.Text = "Team deleted!";
@@ -300,7 +314,7 @@ namespace ValView.Admin
             }
             else
             {
-                lblOutput.Text = "Please select a player first.";
+                lblOutput.Text = "Please select a team first.";
             }
         }
     }
