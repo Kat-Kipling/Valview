@@ -16,8 +16,14 @@ namespace ValView
             {
                 try
                 {
+
                     if (Session["username"] == null) //true if not signed in
                     {
+                        if (Request.Cookies["userCookie"] != null)
+                        {
+                            Session["username"] = Request.Cookies["userCookie"]["username"].ToString();
+                            FormsAuthentication.RedirectFromLoginPage(Request.Cookies["userCookie"]["username"].ToString(), true);
+                        }
                         //Show login link
                         lbtnLogin.Visible = true;
                         //And links to see teams, players and tournaments
@@ -87,6 +93,9 @@ namespace ValView
 
             Session["username"] = null;
             FormsAuthentication.SignOut();
+            HttpCookie objCookie = new HttpCookie("userCookie");
+            objCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(objCookie);
             Response.Redirect("~/index.aspx", true);
         }
     }

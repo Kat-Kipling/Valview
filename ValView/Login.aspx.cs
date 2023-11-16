@@ -23,6 +23,13 @@ namespace ValView
             if (userId != -1)
             {
                 Session["username"] = txtUsername.Text;
+
+                HttpCookie objCookie = new HttpCookie("userCookie");
+                objCookie["username"] = txtUsername.Text;
+                objCookie["password"] = txtPassword.Text;
+                objCookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(objCookie);
+
                 FormsAuthentication.RedirectFromLoginPage(txtUsername.Text, true);
             }
             else
